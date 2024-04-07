@@ -1,9 +1,13 @@
 INTEGRANTES:
 
 Uriel Carbajal
+
 Miguel Angel Ibarra
+
 Osvaldo
+
 Mariela
+
 Pablo Odín
 
 
