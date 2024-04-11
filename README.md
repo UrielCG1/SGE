@@ -4,7 +4,7 @@ Uriel Carbajal
 
 Miguel Angel Ibarra
 
-Osvaldo
+Oswaldo Lopez
 
 Mariela
 
