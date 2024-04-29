@@ -88,9 +88,43 @@ body {
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
-    cursor: pointer;
+    
   }
   
   button:hover {
     background-color: #0056b3;
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Opcional: eliminar borde */
+    padding: 10px 20px; /* Ajustar el relleno */
+    display: flex; /* Activar flexbox para los botones */
+    justify-content: space-between; /* Distribuir botones con espacio entre ellos */
+    align-items: center;
+    margin: 10px;
   }
+
+  /* Seleccionando botones por clase */
+  .like-button {
+    background-color: green; /* Verde para like */
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Opcional: eliminar borde */
+    padding: 10px 20px; /* Ajustar el relleno */
+    cursor: pointer; /* Indicar que es un botón */
+    display: flex; /* Activar flexbox para los botones */
+    justify-content: space-between; /* Distribuir botones con espacio entre ellos */
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .dislike-button {
+    background-color: red; /* Rojo para dislike */
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Opcional: eliminar borde */
+    padding: 10px 20px; /* Ajustar el relleno */
+    cursor: pointer; /* Indicar que es un botón */
+    display: flex; /* Activar flexbox para los botones */
+    justify-content: space-between; /* Distribuir botones con espacio entre ellos */
+    align-items: center;
+    margin: 10px;
+  }
+  
+  
