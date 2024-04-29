@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/buildings2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.wrapper {
+    max-width: 650px;
+    width: 100%;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#foto {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+input#file-upload-button{
+    background-color: white;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+#btn-save{
+    background-color: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 40px;
+}
+#btn-save:hover{
+    background-color:#fd7e14;
+}
+
+i{
+    margin-right: 0.1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    color:white;
+}
+input, textarea{
+    color:white;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        padding: 20px;
+    }
+
+    h2{
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .wrapper {
+        width: 95%;
+    }
+    h2{
+        font-size: 2rem;
+    }
+}
