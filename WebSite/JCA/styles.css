@@ -126,5 +126,10 @@ body {
     align-items: center;
     margin: 10px;
   }
+
+  .navbar{
+    position: fixed;
+    width: 100%;
+  }
   
   
