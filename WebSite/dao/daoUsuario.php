@@ -6,7 +6,7 @@ function Usuario($noEmpleado){
     $con = new LocalConector();
     $conexion=$con->conectar();
 
-    $consP="SELECT id_usuario, nombreUsuario, passwordHash, id_tipoUsuario,correoElectronico,foto FROM Usuario WHERE id_usuario = '$Nomina'";
+    $consP="SELECT userId, fotoUsuario, nombreCompleto, password,email,telefono, empresa,fk_idRol FROM usuarios WHERE userId = '$noEmpleado'";
     $rsconsPro=mysqli_query($conexion,$consP);
 
     mysqli_close($conexion);
@@ -15,12 +15,14 @@ function Usuario($noEmpleado){
         $row = mysqli_fetch_assoc($rsconsPro);
         return array(
             'success' => true, // Indicador de éxito
-            'tipoUsuario' => $row['id_tipoUsuario'],
-            'password_bd' => $row['passwordHash'],
-            'nombreUsuario' => $row['nombreUsuario'],
-            'idUser' => $row['id_usuario'],
-            'emailUsuario' => $row['correoElectronico'],
-            'foto' => $row['foto']
+            'tipoUsuario' => $row['fk_idRol'],
+            'password_bd' => $row['password'],
+            'nombreUsuario' => $row['nombreCompleto'],
+            'idUser' => $row['userId'],
+            'emailUsuario' => $row['email'],
+            'foto' => $row['fotoUsuario'],
+            'telefono' => $row['telefono'],
+            'empresa' => $row['empresa']
         );
     }
     else{
