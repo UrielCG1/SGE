@@ -638,6 +638,7 @@ a.text-hover:focus:after {
   outline: none;
 }
 
+
 /* dropdown style  */
 .dropdown-menu {
   border-radius: 0rem;
@@ -653,7 +654,7 @@ a.text-hover:focus:after {
 .dropdown-item:active {
   color: #1e2125;
   text-decoration: none;
-  background-color: #e9ecef;
+  background-color: #00000053;
 }
 
 
@@ -727,10 +728,13 @@ a.text-hover:focus:after {
   left: 300px;
   z-index: 3;
   width: 54%;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajusta el valor de alfa según lo desees */
+  padding: 20px; /* Añade un relleno para separar el texto del borde */
 }
 
 #intro .banner-content p {
   width: 85%;
+  color: white;
 }
 
 #intro .social-links {
