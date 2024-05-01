@@ -44,7 +44,7 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
 }else {
     echo '<script>alert("Error: Faltan datos en el formulario")</script>';
 }
-function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$biografia,$password)
+function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password)
 {
     $passwordS = sha1($password);
     $resultado = Usuario($noEmpleado);
@@ -57,7 +57,8 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
         $con = new LocalConector();
         $conex = $con->conectar();
 
-        $insertUsuario = "INSERT INTO `Usuarios` (`userId`, `nombre`, `email`, `passwordHash`) VALUES ('$noEmpleado', '$nombre', '$correo', '$passwordS')";
+        $insertUsuario = "INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`) 
+                                VALUES ('$noEmpleado', '$nombre', '$correo', '$passwordS', '$telefono', '$empresa','$img')";
         $rInsertUsuario = mysqli_query($conex, $insertUsuario);
 
         mysqli_close($conex);

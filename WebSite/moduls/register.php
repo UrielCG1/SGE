@@ -73,21 +73,11 @@
             </div>
         </div>
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="registrarUsuario()"><i class="las la-save"></i>Registrarse</button>
+            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="validarFormulario()"><i class="las la-save"></i>Registrarse</button>
         </div>
     </form>
 </div>
 <script>
-    function validarContraseñas() {
-        var passwordN = document.getElementById("passwordN").value;
-        var passwordC = document.getElementById("passwordC").value;
-
-        if (passwordN !== passwordC) {
-            alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-            return false;
-        }
-        return true;
-    }
     function validarCorreo() {
         var correo = document.getElementById("correoR").value;
         var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -97,6 +87,33 @@
             return false;
         }
         return true;
+    }
+
+    function validarFormulario() {
+        var nombre = document.getElementById("nombreR").value;
+        var correo = document.getElementById("correoR").value;
+        var telefono = document.getElementById("telefonoR").value;
+        var empresa = document.getElementById("empresaR").value;
+        var numeroEmpleado = document.getElementById("numero_empleado").value;
+        var password = document.getElementById("passwordN").value;
+        var confirmarPassword = document.getElementById("passwordC").value;
+        var biografia = document.getElementById("biografiaR").value;
+
+        // Verificar si algún campo está vacío
+        if (nombre === "" || correo === "" || telefono === "" || empresa === "" || numeroEmpleado === "" || password === "" || confirmarPassword === "" || biografia === "") {
+            alert("Por favor completa todos los campos.");
+            return false;
+        }
+        // Verificar si las contraseñas coinciden
+        if (password !== confirmarPassword) {
+            alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+            return false;
+        }
+
+        validarCorreo();
+
+        //Guardar datos
+        registrarUsuario();
     }
 
 </script>
