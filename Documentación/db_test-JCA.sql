@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 11:05 PM
+-- Generation Time: May 04, 2024 at 11:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,6 +49,20 @@ INSERT INTO `espacios` (`espacioID`, `nombreEspacio`, `descripcion`, `tipoEspaci
 (107, 'Salas de capacitación', 'Espacios equipados con tecnología audiovisual para sesiones de formación y desarrollo.\r\n', 'Sala', 1, 'xd', 9),
 (108, 'Oficinas', 'Oficinas privadas para trabajadores que necesitan concentración o privacidad. La cual cuentan con monitor y todo el equipo necesario.\r\n', 'Oficina', 1, 'AMLO', 8),
 (109, 'Cubículos', 'Espacios semi-privados con divisiones para trabajadores que necesitan un espacio propio pero no una oficina cerrada.', 'Cubículos', 0, 'lol', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluacion_espacio`
+--
+
+CREATE TABLE `evaluacion_espacio` (
+  `evaluacionID` int(255) NOT NULL,
+  `puntuacion` int(255) NOT NULL,
+  `comentario` varchar(1024) NOT NULL,
+  `fechaHora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `evaluacionEspacioCol` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
