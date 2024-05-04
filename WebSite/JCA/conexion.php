@@ -28,8 +28,6 @@ if ($resultado->num_rows > 0) {
         echo '          <h2>' . $fila['nombreEspacio'] . '</h2>';
         echo '          <p>Ubicación: ' . $fila['ubicacion'] . '</p>';
         echo '          <p>Capacidad: ' . $fila['capacidad'] . ' personas</p>';
-        //echo '          <p>Ubicación: Piso 1</p>';
-        //echo '          <p>Capacidad: 12 personas</p>';
         echo '          <p>Disponibilidad: ' . ($fila['disponibilidad'] == 1 ? 'Disponible' : 'No disponible') . '</p>'; // Verifica la disponibilidad y muestra un texto adecuado
         echo '          <button onclick="reservarSala(' . $fila['espacioID'] . ')" class="reserva-button">Reservar</button>';
         echo '          <button class="like-button" onclick="darLike(' . $fila['espacioID'] . ')">Like</button>';
