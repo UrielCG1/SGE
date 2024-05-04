@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 11:11 PM
+-- Generation Time: May 04, 2024 at 11:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,11 +57,11 @@ INSERT INTO `espacios` (`espacioID`, `nombreEspacio`, `descripcion`, `tipoEspaci
 --
 
 CREATE TABLE `evaluacion_espacio` (
-  `evaluacionID` int(255) NOT NULL,
-  `puntuacion` int(255) NOT NULL,
-  `comentario` varchar(1024) NOT NULL,
+  `puntuacion` int(255) DEFAULT NULL,
+  `comentario` varchar(1024) DEFAULT NULL,
   `fechaHora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `evaluacionEspacioCol` varchar(45) NOT NULL
+  `evaluacionEspacioCol` varchar(45) NOT NULL,
+  `evaluacionID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -75,6 +75,12 @@ ALTER TABLE `espacios`
   ADD PRIMARY KEY (`espacioID`);
 
 --
+-- Indexes for table `evaluacion_espacio`
+--
+ALTER TABLE `evaluacion_espacio`
+  ADD PRIMARY KEY (`evaluacionID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -83,6 +89,12 @@ ALTER TABLE `espacios`
 --
 ALTER TABLE `espacios`
   MODIFY `espacioID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
+-- AUTO_INCREMENT for table `evaluacion_espacio`
+--
+ALTER TABLE `evaluacion_espacio`
+  MODIFY `evaluacionID` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
