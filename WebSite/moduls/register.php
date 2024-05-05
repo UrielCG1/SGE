@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>SGE Registro de Usuario</title>
+    <title>SGE | Registro de Usuario</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,7 @@
     <script src="js/modernizr.js"></script>
 </head>
 <body>
-<h2>SGE Registro de Usuario</h2>
+<h2>SGE | Registro de Usuario</h2>
 <div class="wrapper">
     <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col">
                 <label for="telefonoR"><i class="las la-phone"></i>Teléfono</label>
-                <input type="tel" id="telefonoR" name="telefonoR">
+                <input type="tel" id="telefonoR" name="telefonoR" onchange="validarCorreo()">
             </div>
             <div class="col">
                 <label for="fotoR"><i class="las la-image"></i>Foto</label>
@@ -58,14 +58,64 @@
         </div>
         <div class="row">
             <div class="col">
+                <label for="passwordN"><i class="las la-city"></i>Contraseña</label>
+                <input type="password" id="passwordN" name="passwordN">
+            </div>
+            <div class="col">
+                <label for="passwordC"><i class="las la-address-card"></i>Confirmar contraseña</label>
+                <input type="password" id="passwordC"  name="passwordC" onchange="validarContraseñas()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <label for="biografiaR"><i class="las la-theater-masks"></i>Biografía</label>
-                <textarea id="biografiaR" name="biografiaR" rows="4"></textarea>
+                <textarea id="biografiaR" name="biografiaR" rows="4" ></textarea>
             </div>
         </div>
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" id="btn-save"><i class="las la-save"></i>Registrarse</button>
+            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="validarFormulario()"><i class="las la-save"></i>Registrarse</button>
         </div>
     </form>
 </div>
+<script>
+    function validarCorreo() {
+        var correo = document.getElementById("correoR").value;
+        var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!regexCorreo.test(correo)) {
+            alert("Por favor, ingresa un correo electrónico válido.");
+            return false;
+        }
+        return true;
+    }
+
+    function validarFormulario() {
+        var nombre = document.getElementById("nombreR").value;
+        var correo = document.getElementById("correoR").value;
+        var telefono = document.getElementById("telefonoR").value;
+        var empresa = document.getElementById("empresaR").value;
+        var numeroEmpleado = document.getElementById("numero_empleado").value;
+        var password = document.getElementById("passwordN").value;
+        var confirmarPassword = document.getElementById("passwordC").value;
+        var biografia = document.getElementById("biografiaR").value;
+
+        // Verificar si algún campo está vacío
+        if (nombre === "" || correo === "" || telefono === "" || empresa === "" || numeroEmpleado === "" || password === "" || confirmarPassword === "" || biografia === "") {
+            alert("Por favor completa todos los campos.");
+            return false;
+        }
+        // Verificar si las contraseñas coinciden
+        if (password !== confirmarPassword) {
+            alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+            return false;
+        }
+
+        validarCorreo();
+
+        //Guardar datos
+        registrarUsuario();
+    }
+
+</script>
 </body>
 </html>
