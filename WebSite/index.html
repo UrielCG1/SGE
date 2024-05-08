@@ -179,6 +179,10 @@
               <li class="nav-item pe-4">
                 <a class="nav-link light text-uppercase" href="#contact">Contacto</a>
               </li>
+              <li class="nav-item pe-4">
+                
+                <a class="nav-link light text-uppercase" href="../WebSite/php/login.php">LogOut</a>
+              </li>
 <!--
               <li class="nav-item dropdown pe-4">
                 <a class="nav-link light text-uppercase dropdown-toggle align-items-center pe-0"
@@ -539,7 +543,7 @@
                           <td>10 ft</td>
                         </tr>
                         <tr>
-                          <td class="pe-2"><strong>Capacity:</strong></td>
+                          <td class="pe-2"><strong>Capacidad:</strong></td>
                           <td>Max persion 2</td>
                         </tr>
                         <tr>
@@ -547,12 +551,12 @@
                           <td>Normal Beds</td>
                         </tr>
                         <tr>
-                          <td class="pe-2"><strong>Services:</strong></td>
+                          <td class="pe-2"><strong>Servicios:</strong></td>
                           <td>Wifi, Television, Bathroom,...</td>
                         </tr>
                       </tbody>
                     </table>
-                    <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">More Details</a>
+                    <a href="room-details.html" class="btn btn-small btn-black btn-pill mt-3">Mas Detalles</a>
                   </div>
                 </div>
               </div>
@@ -569,7 +573,7 @@
 
           <a href="rooms.html"
             class="btn btn-arrow btn-pill btn-medium btn-outline-dark bg-light text-black position-relative">
-            <span>View All Rooms<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            <span>Ver todas las salas<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8"
                 enable-background="new 0 0 36.1 25.8" xml:space="preserve">
                 <g>
@@ -595,24 +599,24 @@
         <form action="" class="booking-form d-flex flex-wrap align-items-center justify-content-around">
           <div class="booking-content d-flex flex-wrap col-lg-8">
             <div class="booking-item">
-              <label for="date-in" class="text-uppercase d-block">Arrival</label>
+              <label for="date-in" class="text-uppercase d-block">Llegadas</label>
               <div class="date" id="select-arrival-date"></div>
             </div>
             <div class="booking-item">
-              <label for="date-in" class="text-uppercase d-block">Departure</label>
+              <label for="date-in" class="text-uppercase d-block">Salidas</label>
               <div class="date" id="select-departure-date"></div>
             </div>
             <div class="booking-item">
-              <label class="text-uppercase d-block">Rooms</label>
+              <label class="text-uppercase d-block">Salas</label>
               <input type="number" class="booking" name="rooms" min="01" max="5" placeholder="01" value="01">
             </div>
             <div class="booking-item">
-              <label class="text-uppercase d-block">Guests</label>
+              <label class="text-uppercase d-block">Agendados</label>
               <input type="number" class="booking" name="guests" min="01" max="10" placeholder="01" value="01">
             </div>
           </div>
           <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative">
-            <span>Check availability<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            <span>Consulta disponibilidad<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8"
                 enable-background="new 0 0 36.1 25.8" xml:space="preserve">
                 <g>
@@ -721,30 +725,32 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">About us</h5>
-            <p>Ultrices interdum viverra pharetra, tellus. Sapien eu diam ipsum volutpat, amet fringi verra
-              pharetrailla.</p>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">Acerca de</h5>
+            <p>SGE es una empresa de administración de salas que le permite al usuario mantener una buena administración
+              de sus espacios de trabajo.</p>
+            <p class="mt-3">
+            </p>
           </div>
         </div>
 
         <div class="col-lg-2 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">Quick Links</h5>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">Enlaces</h5>
             <ul class="menu-list list-unstyled">
               <li class="pb-2">
-                <a href="#about">About</a>
+                <a href="#about">Acerca</a>
               </li>
               <li class="pb-2">
-                <a href="#activities">Activities</a>
+                <a href="#activities">Actividades</a>
               </li>
               <li class="pb-2">
-                <a href="#our-rooms">Rooms</a>
+                <a href="#our-rooms">Salas</a>
               </li>
               <li class="pb-2">
-                <a href="#booking-wrap">Booking</a>
+                <a href="#booking-wrap">Reserva</a>
               </li>
               <li class="pb-2">
-                <a href="#contact">Contact</a>
+                <a href="#contact">Contacto</a>
               </li>
             </ul>
           </div>
@@ -752,14 +758,14 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">Contact</h5>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">Contacto</h5>
             <ul class="menu-list list-unstyled">
-              <li class="pb-2">Tea Berry, Marinette, USA
+              <li class="pb-2">4461003454
               </li>
-              <li class="pb-2">+31 939 777 4546233
+              <li class="pb-2">4423457689
               </li>
               <li class="pb-2">
-                <a href="mailto:">info@templatesjungle.com</a>
+                <a href="mailto:">info@sge.com</a>
               </li>
             </ul>
           </div>
@@ -767,9 +773,8 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">Get social</h5>
-            <p>Follow us on social platforms and keep in touch with <a href="https://templatesjungle.com/">Templates
-                Jungle.</a></p>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">Redes Sociales</h5>
+            <p>Siguenos en nuestras redes sociales<a href="https://templatesjungle.com/"></a></p>
             <ul class="social-links list-unstyled d-flex mt-3">
               <li class="border d-flex justify-content-center align-items-center mx-auto">
                 <a href="#">
