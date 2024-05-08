@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Telly Hotel</title>
+  <title>SGE</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,17 +164,13 @@
             <ul id="navbar"
               class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase active" href="index.html">Home</a>
-              </li>
-              
-              <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="#activities">Actividades</a>
+                <a class="nav-link light text-uppercase active" href="index.html"><strong>Home</strong></a>
               </li>
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="#our-rooms">Recomendaciones</a>
+                <a class="nav-link light text-uppercase" href="#our-rooms"><strong>Recomendaciones </strong> </a>
               </li>
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="#booking-wrap">Buscar por fecha</a>
+                <a class="nav-link light text-uppercase" href="#booking-wrap"><strong>Buscar por fecha</strong></a>
               </li>
               <li class="nav-item pe-4">
                 <a class="nav-link light text-uppercase" href="#contact">Contacto</a>
@@ -216,15 +212,11 @@
                 </ul>
               </li>
 
-              <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase fw-bold fs-5" href="https://templatesjungle.gumroad.com/l/telly-hotel-and-resort-html-website-template">GET PRO</a>
-              </li>
 
-            </ul>
--->
             <div class="btn-box">
-              <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative">
-                <span>Login<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative" onclick="redirectToLogin()">
+                <span><strong>Login</strong>
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 25.8"
                     enable-background="new 0 0 36.1 25.8" xml:space="preserve">
                     <g>
@@ -236,7 +228,12 @@
                   </svg></span>
               </button>
             </div>
-          
+            <script>
+              function redirectToLogin() {
+                window.location.href = 'php/login.php';
+              }
+            </script>
+
           </div>
         </div>
       </div>
@@ -272,7 +269,7 @@
   </section>
 
 
-
+<!--
   <section id="activities" class="overflow-hidden">
     <div class="container-fluid p-0">
       <div class="row">
@@ -374,7 +371,7 @@
               </div>
 
             </div>
-            <!-- row -->
+            
 
             <a href="services.html"
               class="btn btn-arrow btn-pill btn-medium btn-outline-dark bg-light text-black position-relative">
@@ -395,7 +392,7 @@
 
       </div>
     </div>
-  </section>
+  </section>   -->
 
   <section id="our-rooms" class="position-relative padding-large pt-8">
     <div class="container">
@@ -725,11 +722,9 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">Acerca de</h5>
-            <p>SGE es una empresa de administración de salas que le permite al usuario mantener una buena administración
-              de sus espacios de trabajo.</p>
-            <p class="mt-3">
-            </p>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">About us</h5>
+            <p>Ultrices interdum viverra pharetra, tellus. Sapien eu diam ipsum volutpat, amet fringi verra
+              pharetrailla.</p>
           </div>
         </div>
 
@@ -738,19 +733,19 @@
             <h5 class="widget-title pb-2 fw-semibold fs-2">Enlaces</h5>
             <ul class="menu-list list-unstyled">
               <li class="pb-2">
-                <a href="#about">Acerca</a>
+                <a href="#about">About</a>
               </li>
               <li class="pb-2">
-                <a href="#activities">Actividades</a>
+                <a href="#activities">Activities</a>
               </li>
               <li class="pb-2">
-                <a href="#our-rooms">Salas</a>
+                <a href="#our-rooms">Rooms</a>
               </li>
               <li class="pb-2">
-                <a href="#booking-wrap">Reserva</a>
+                <a href="#booking-wrap">Booking</a>
               </li>
               <li class="pb-2">
-                <a href="#contact">Contacto</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -760,12 +755,12 @@
           <div class="footer-menu">
             <h5 class="widget-title pb-2 fw-semibold fs-2">Contacto</h5>
             <ul class="menu-list list-unstyled">
-              <li class="pb-2">4461003454
+              <li class="pb-2">Tea Berry, Marinette, USA
               </li>
-              <li class="pb-2">4423457689
+              <li class="pb-2">+31 939 777 4546233
               </li>
               <li class="pb-2">
-                <a href="mailto:">info@sge.com</a>
+                <a href="mailto:">info@templatesjungle.com</a>
               </li>
             </ul>
           </div>
@@ -773,8 +768,9 @@
 
         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
           <div class="footer-menu">
-            <h5 class="widget-title pb-2 fw-semibold fs-2">Redes Sociales</h5>
-            <p>Siguenos en nuestras redes sociales<a href="https://templatesjungle.com/"></a></p>
+            <h5 class="widget-title pb-2 fw-semibold fs-2">Get social</h5>
+            <p>Follow us on social platforms and keep in touch with <a href="https://templatesjungle.com/">Templates
+                Jungle.</a></p>
             <ul class="social-links list-unstyled d-flex mt-3">
               <li class="border d-flex justify-content-center align-items-center mx-auto">
                 <a href="#">
