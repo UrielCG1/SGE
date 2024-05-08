@@ -1,6 +1,7 @@
 <?php
 include_once('connection.php');
 require 'daoUsuario.php';
+require 'functions.php';
 
 // Verificar si los datos están presentes y asignarlos de manera segura
 if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numero_empleado'], $_POST['biografiaR'], $_POST['passwordN'])) {
@@ -33,7 +34,37 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
         if (in_array($extension, $extensionesPermitidas)) {
             if (move_uploaded_file($temp, $moverImgFile)) {
                 echo "La imagen " . htmlspecialchars($imgName) . " ha sido subida correctamente.";
-                RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$biografia,$password);
+                $token = generateToken();
+                $registro = RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$biografia,$password, $token);
+                if($registro > 0){
+                    $url = 'http://'.$_SERVER["SERVER_NAME"].'/login/activar.php?id='.$registro.'&val='.$token;
+                    $asunto = 'Activar cuenta | SGE';
+                    $cuerpo = "<!DOCTYPE html>
+                                <html lang='es'>
+                                <head>
+                                <meta charset='UTF-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                                <title>Correo Electrónico</title>
+                                </head>
+                                <body style='font-family: Arial, sans-serif; background-color: #f9f7f5; margin: 0; padding: 0;'>
+                                <div class='container' style='max-width: 600px; margin: 20px auto; padding: 20px; background-color: #0c0d0c; color: #f9f7f5; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'>
+                                    <h1 style='text-align: center;'>¡Bienvenido!</h1>
+                                    <p>Estimado <span style='font-weight: bold;'>$nombre</span>:</p>
+                                    <p>Para continuar con el proceso de registro, es indispensable que ingrese al siguiente enlace:</p>
+                                    <p><a href='$url' style='color: #bfb3ab; text-decoration: none; font-weight: bold;'>Activar cuenta</a></p>
+                                </div>
+                                </body>
+                                </html>";
+
+                    if(enviarEmail($correo, $nombre,$asunto,$cuerpo)){
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=confirmacionCorreo.php'>";
+                        exit;
+                    }else{
+                        echo "Error al enviar correo electrónico";
+                    }
+                }else{
+                    echo "Error al registrar";
+                }
             } else {
                 echo "Hubo un error al subir la imagen.";
             }
@@ -44,7 +75,36 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
 }else {
     echo '<script>alert("Error: Faltan datos en el formulario")</script>';
 }
-function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password)
+function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password,$token)
+{
+    $passwordS = hasPassword($password);
+    $resultado = Usuario($noEmpleado);
+
+    if ($resultado['success']) {
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=register.php'>";
+        echo '<script>alert("El usuario ya existe, verifique sus datos")</script>';
+        return 0;
+    } else {
+        $con = new LocalConector();
+        $conex = $con->conectar();
+        global $mysqli;
+
+        $stmt = $mysqli -> prepare("INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`) 
+                                VALUES (?, ?, ?, ?, ?, ?,?,?)");
+        $stmt->bind_param('isssssss', $noEmpleado, $nombre, $correo, $passwordS, $telefono, $empresa,$img,$token);
+
+
+        if ($stmt->execute()) {
+            return $mysqli->insert_id;
+        } else {
+            return 0;
+        }
+    }
+}
+
+
+/*
+ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password,$token)
 {
     $passwordS = sha1($password);
     $resultado = Usuario($noEmpleado);
@@ -57,19 +117,19 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
         $con = new LocalConector();
         $conex = $con->conectar();
 
-        $insertUsuario = "INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`) 
-                                VALUES ('$noEmpleado', '$nombre', '$correo', '$passwordS', '$telefono', '$empresa','$img')";
+        $insertUsuario = "INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`)
+                                VALUES ('$noEmpleado', '$nombre', '$correo', '$passwordS', '$telefono', '$empresa','$img','$token')";
         $rInsertUsuario = mysqli_query($conex, $insertUsuario);
 
         mysqli_close($conex);
 
         if (!$rInsertUsuario) {
-            echo '<script>alert("Error al registrar el usuario")</script>';
             return 0;
         } else {
-            echo '<script>alert("Usuario registrado exitosamente")</script>';
             return 1;
         }
     }
 }
+
+ */
 ?>
