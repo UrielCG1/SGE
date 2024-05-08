@@ -66,12 +66,6 @@
                 <input type="password" id="passwordC"  name="passwordC" onchange="validarContraseñas()">
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <label for="biografiaR"><i class="las la-theater-masks"></i>Biografía</label>
-                <textarea id="biografiaR" name="biografiaR" rows="4" ></textarea>
-            </div>
-        </div>
         <div class="submit-container">
             <button type="submit" class="btn btn-primary" id="btn-save"  onclick="validarFormulario()"><i class="las la-save"></i>Registrarse</button>
         </div>
@@ -97,10 +91,9 @@
         var numeroEmpleado = document.getElementById("numero_empleado").value;
         var password = document.getElementById("passwordN").value;
         var confirmarPassword = document.getElementById("passwordC").value;
-        var biografia = document.getElementById("biografiaR").value;
 
         // Verificar si algún campo está vacío
-        if (nombre === "" || correo === "" || telefono === "" || empresa === "" || numeroEmpleado === "" || password === "" || confirmarPassword === "" || biografia === "") {
+        if (nombre === "" || correo === "" || telefono === "" || empresa === "" || numeroEmpleado === "" || password === "" || confirmarPassword === "") {
             alert("Por favor completa todos los campos.");
             return false;
         }
