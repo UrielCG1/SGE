@@ -6,7 +6,7 @@ function Usuario($noEmpleado){
     $con = new LocalConector();
     $conexion=$con->conectar();
 
-    $consP="SELECT userId, fotoUsuario, nombreCompleto, password,email,telefono, empresa,fk_idRol FROM usuarios WHERE userId = '$noEmpleado'";
+    $consP="SELECT userId, fotoUsuario, nombreCompleto, password,email,telefono, empresa,fk_idRol,numEmpleado FROM usuarios WHERE numEmpleado = '$noEmpleado'";
     $rsconsPro=mysqli_query($conexion,$consP);
 
     mysqli_close($conexion);
@@ -22,7 +22,8 @@ function Usuario($noEmpleado){
             'emailUsuario' => $row['email'],
             'foto' => $row['fotoUsuario'],
             'telefono' => $row['telefono'],
-            'empresa' => $row['empresa']
+            'empresa' => $row['empresa'],
+            'noEmpleado' => $row['numEmpleado']
         );
     }
     else{

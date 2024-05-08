@@ -4,29 +4,28 @@ require 'daoUsuario.php';
 require 'functions.php';
 
 // Verificar si los datos están presentes y asignarlos de manera segura
-if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numero_empleado'], $_POST['biografiaR'], $_POST['passwordN'])) {
+if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numero_empleado'], $_POST['passwordN'])) {
 
     $nombre        = $_POST['nombreR'];
     $correo        = $_POST['correoR'];
     $telefono      = $_POST['telefonoR'];
     $empresa       = $_POST['empresaR'];
     $noEmpleado    = $_POST['numero_empleado'];
-    $biografia      =  $_POST['biografiaR'];
     $password      =  $_POST['passwordN'];
 
     if ($_FILES["fotoR"]["error"] > 0) {
         echo "Error: " . $_FILES["fotoR"]["error"];
     } else {
         $fechaActual = date('Y-m-d_H-i-s');
-        $target_dir = "../images/";
+        $target_dir = "http://localhost/SGE/WebSite/images/usuarios/";
         $archivo = $_FILES['fotoR']['name'];
-        $imgName = $fechaActual . '-' . $noEmpleado;
+        $imgName = $fechaActual . '-' . str_replace(' ', '', $nombre);
         $img = $target_dir . $imgName;
 
         $tipo = $_FILES['fotoR']['type'];
         $tamano = $_FILES['fotoR']['size'];
         $temp = $_FILES['fotoR']['tmp_name'];
-        $moverImgFile = "../images/" . $imgName;
+        $moverImgFile = "../images/usuarios/" . $imgName;
 
         $extension = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
         $extensionesPermitidas = array("gif", "jpeg", "jpg", "png");
@@ -35,7 +34,7 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
             if (move_uploaded_file($temp, $moverImgFile)) {
                 echo "La imagen " . htmlspecialchars($imgName) . " ha sido subida correctamente.";
                 $token = generateToken();
-                $registro = RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$biografia,$password, $token);
+                $registro = RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password, $token);
                 if($registro > 0){
                     $url = 'http://'.$_SERVER["SERVER_NAME"].'/login/activar.php?id='.$registro.'&val='.$token;
                     $asunto = 'Activar cuenta | SGE';
@@ -89,9 +88,9 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
         $conex = $con->conectar();
         global $mysqli;
 
-        $stmt = $mysqli -> prepare("INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`) 
-                                VALUES (?, ?, ?, ?, ?, ?,?,?)");
-        $stmt->bind_param('isssssss', $noEmpleado, $nombre, $correo, $passwordS, $telefono, $empresa,$img,$token);
+        $stmt = $mysqli -> prepare("INSERT INTO `Usuarios` ( `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`, `numEmpleado`) 
+                                VALUES ( ?, ?, ?, ?, ?,?,?,?)");
+        $stmt->bind_param('ssssssss', $nombre, $correo, $passwordS, $telefono, $empresa,$img,$token, $noEmpleado);
 
 
         if ($stmt->execute()) {
