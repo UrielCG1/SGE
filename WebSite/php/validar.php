@@ -13,7 +13,7 @@ $resultado= mysqli_query($conn, $consulta);
 $filas=mysqli_num_rows($resultado);
 
 if($filas){
-    header('location: ../index.html');
+    header('location: ../index.php');
 }else{
     ?>
     <?php

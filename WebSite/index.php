@@ -718,13 +718,13 @@
   </section>     -->
 <!--seccion de reseñas-->
 <section class="reviews-section">
-  <h2>Reseñas de Clientes</h2>
+  <h2>Reseñas de Usuarios</h2>
   <div class="reviews-container">
     <?php
       // Definir las reseñas como un array de arrays asociativos
       $resenas = array(
-        array("nombre" => "Nombre del Usuario 1", "foto" => "user1.jpg", "texto" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula leo sit amet justo varius volutpat.", "rating" => 4, "comentario" => "Excelente servicio"),
-        array("nombre" => "Nombre del Usuario 2", "foto" => "user2.jpg", "texto" => "Sed euismod justo sit amet leo feugiat, eget cursus justo posuere. Quisque id feugiat est.", "rating" => 5, "comentario" => "¡Me encantó la experiencia!")
+        array("nombre" => "Uriel", "foto" => "user1.jpg", "texto" => "Comentarios....", "rating" => 4, "comentario" => "Excelente servicio"),
+        array("nombre" => "Mariela", "foto" => "user2.jpg", "texto" => "Comentarios...pu", "rating" => 5, "comentario" => "¡Me encantó la experiencia!")
         // Puedes agregar más reseñas según sea necesario
       );
 
