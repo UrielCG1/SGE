@@ -1,10 +1,9 @@
 <?php
-$nombre = $postData['nombreR'];
-    $correo = $postData['correoR'];
-    $telefono = $postData['telefonoR'];
-    $empresa = $postData['empresaR'];
-    $noEmpleado = $postData['numEmpleado'];
-    $password = $postData['passwordN'];
+$nombre = $_POST['nombreR'];
+    $correo = $_POST['correoR'];
+    $telefono = $_POST['telefonoR'];
+    $empresa = $_POST['empresaR'];
+    $noEmpleado = $_POST['numEmpleado'];
 
     $fechaActual = date('Y-m-d_H-i-s');
     $target_dir = "../images/usuarios/";
@@ -24,7 +23,6 @@ $nombre = $postData['nombreR'];
     }
 
 RegistrarUsuario($nombre, $correo, $telefono, $img, $empresa, $noEmpleado, $password);
-
 
 
 function RegistrarUsuario($nombre, $correo, $telefono, $img, $empresa, $noEmpleado, $password)
