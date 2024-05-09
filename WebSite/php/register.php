@@ -21,6 +21,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
         rel="stylesheet">
     <script src="http://localhost/SGE/WebSite/js/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 <h2>SGE | Registro de Usuario</h2>
@@ -28,7 +30,6 @@
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
-
                 <label for="nombreR"><i class="las la-user"></i>Nombre</label>
                 <input type="text" id="nombreR" name="nombreR" required>
             </div>
@@ -53,8 +54,8 @@
                 <input type="text" id="empresaR" name="empresaR">
             </div>
             <div class="col">
-                <label for="numero_empleado"><i class="las la-address-card"></i>Número de Empleado</label>
-                <input type="text" id="numero_empleado"  id="foto" name="numero_empleado">
+                <label for="numEmpleado"><i class="las la-address-card"></i>Número de Empleado</label>
+                <input type="text" id="numEmpleado"  id="foto" name="numEmpleado">
             </div>
         </div>
         <div class="row">
