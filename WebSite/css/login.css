@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    background-image: url("../images/login4.jpeg");
+  }
+  .image img{
+    max-width: 140px;
+    min-height: 70px;
+    display: block;
+    margin: 0 auto;
+    
+  }
+  
+  .login-container {
+    width: 300px;
+    padding: 40px;
+    background-color: #6831e92f;
+   
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .regis button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bffb0;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 3px; 
+    text-decoration: none;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .regis a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .pass {
+    margin-top: 20px; /* Ajusta esta distancia según tu preferencia */
+  }
+  
+  .pass a {
+    text-decoration: none; /* Quita la subrayado del enlace */
+    color: blue; /* Cambia el color del texto si es necesario */
+  }

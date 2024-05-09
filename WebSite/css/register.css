@@ -11,9 +11,13 @@ body {
     flex-direction: column;
     color: #fff;
 }
-
-.wrapper {
+#divLogin{
+    max-width: 450px;
+}
+#divRegister{
     max-width: 650px;
+}
+.wrapper {
     width: 100%;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.2);
@@ -127,3 +131,44 @@ fotoR::file-selector-button {
     color: #f1f4f9; /*Selectror del input tipo file*/
     background-color: dodgerblue;
 }
+
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .image img{
+    max-width: 140px;
+    min-height: 70px;
+    display: block;
+    margin: 0 auto;
+    
+  }
+
+  .regis button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bffb0;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 3px; 
+    text-decoration: none;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .regis a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .regis a{
+    text-decoration: none;
+    color: #fff;
+  }

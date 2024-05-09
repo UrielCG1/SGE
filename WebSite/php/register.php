@@ -14,18 +14,20 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link href="css/date-time-picker-component.min.css" rel="stylesheet">
+    <link href="http://localhost/SGE/WebSite/css/date-time-picker-component.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap"
         rel="stylesheet">
-    <script src="js/modernizr.js"></script>
+    <script src="http://localhost/SGE/WebSite/js/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 <h2>SGE | Registro de Usuario</h2>
-<div class="wrapper">
-    <form action="" method="post" enctype="multipart/form-data">
+<div class="wrapper" id="divRegister">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <label for="nombreR"><i class="las la-user"></i>Nombre</label>
@@ -33,13 +35,13 @@
             </div>
             <div class="col">
                 <label for="correoR"><i class="las la-envelope"></i>Correo Electrónico</label>
-                <input type="email" id="correoR" name="correoR" required>
+                <input type="email" id="correoR" name="correoR" onchange="validarCorreo()" required>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label for="telefonoR"><i class="las la-phone"></i>Teléfono</label>
-                <input type="tel" id="telefonoR" name="telefonoR" onchange="validarCorreo()">
+                <input type="tel" id="telefonoR" name="telefonoR">
             </div>
             <div class="col">
                 <label for="fotoR"><i class="las la-image"></i>Foto</label>
@@ -52,8 +54,8 @@
                 <input type="text" id="empresaR" name="empresaR">
             </div>
             <div class="col">
-                <label for="numero_empleado"><i class="las la-address-card"></i>Número de Empleado</label>
-                <input type="text" id="numero_empleado"  id="foto" name="numero_empleado">
+                <label for="numEmpleado"><i class="las la-address-card"></i>Número de Empleado</label>
+                <input type="text" id="numEmpleado"  id="foto" name="numEmpleado">
             </div>
         </div>
         <div class="row">
@@ -63,52 +65,14 @@
             </div>
             <div class="col">
                 <label for="passwordC"><i class="las la-address-card"></i>Confirmar contraseña</label>
-                <input type="password" id="passwordC"  name="passwordC" onchange="validarContraseñas()">
+                <input type="password" id="passwordC"  name="passwordC" onchange="validarPassword();">
             </div>
         </div>
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="validarFormulario()"><i class="las la-save"></i>Registrarse</button>
+            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="  registrarUsuario()"><i class="las la-save"></i>Registrarse</button>
         </div>
     </form>
 </div>
-<script>
-    function validarCorreo() {
-        var correo = document.getElementById("correoR").value;
-        var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!regexCorreo.test(correo)) {
-            alert("Por favor, ingresa un correo electrónico válido.");
-            return false;
-        }
-        return true;
-    }
-
-    function validarFormulario() {
-        var nombre = document.getElementById("nombreR").value;
-        var correo = document.getElementById("correoR").value;
-        var telefono = document.getElementById("telefonoR").value;
-        var empresa = document.getElementById("empresaR").value;
-        var numeroEmpleado = document.getElementById("numero_empleado").value;
-        var password = document.getElementById("passwordN").value;
-        var confirmarPassword = document.getElementById("passwordC").value;
-
-        // Verificar si algún campo está vacío
-        if (nombre === "" || correo === "" || telefono === "" || empresa === "" || numeroEmpleado === "" || password === "" || confirmarPassword === "") {
-            alert("Por favor completa todos los campos.");
-            return false;
-        }
-        // Verificar si las contraseñas coinciden
-        if (password !== confirmarPassword) {
-            alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-            return false;
-        }
-
-        validarCorreo();
-
-        //Guardar datos
-        registrarUsuario();
-    }
-
-</script>
+<script src="http://localhost/SGE/WebSite/js/insertarDatos.js"></script>
 </body>
 </html>

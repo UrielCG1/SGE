@@ -1,16 +1,17 @@
 <?php
+// Verificar si los datos están presentes y asignarlos de manera segura
+/*
 include_once('connection.php');
 require 'daoUsuario.php';
 require 'functions.php';
 
-// Verificar si los datos están presentes y asignarlos de manera segura
-if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numero_empleado'], $_POST['passwordN'])) {
+if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numEmpleado'], $_POST['passwordN'])) {
 
     $nombre        = $_POST['nombreR'];
     $correo        = $_POST['correoR'];
     $telefono      = $_POST['telefonoR'];
     $empresa       = $_POST['empresaR'];
-    $noEmpleado    = $_POST['numero_empleado'];
+    $noEmpleado    = $_POST['numEmpleado'];
     $password      =  $_POST['passwordN'];
 
     if ($_FILES["fotoR"]["error"] > 0) {
@@ -100,7 +101,7 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
         }
     }
 }
-
+*/
 
 /*
  function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password,$token)
