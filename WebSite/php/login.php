@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Iniciar sesión</title>
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
 
-<div class="login-container">
+<div class="login-container wrapper" id="divLogin">
   <div class="image"><img src="../images/LogoSGE.png"></div>
     <h2>Iniciar sesión</h2>
     <form action="validar.php" method="post">
@@ -19,9 +19,9 @@
         <label for="contrasena">Contraseña:</label>
         <input type="password" id="password" name="password" required>
       </div>
-      <div><input type="submit" value="Entrar"></div>  
+      <div><input type="submit" class="btn btn-primary"  value="Entrar"></div>  
       <div class="regis">
-        <button><a href="registro_usuarios.php">Registrar</a></button>
+        <button class="btn btn-secundary"><a href="register.php">Registrar</a></button>
       </div>
       <div class="pass">
         <a href="olvidaste_contraseña.php">Olvidaste contraseña</a>
