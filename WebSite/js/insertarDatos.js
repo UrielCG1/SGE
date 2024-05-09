@@ -23,17 +23,15 @@ function validarFormulario() {
         alert("Por favor completa todos los campos.");
         return false;
     }
+
+}
+
+function validarPassword(){
     // Verificar si las contraseñas coinciden
     if (password !== confirmarPassword) {
         alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
         return false;
     }
-
-    validarCorreo();
-    alert("correo valiado");
-
-    //Guardar datos
-    registrarUsuario();
 }
     
     function validarImagen(file) {
@@ -59,6 +57,8 @@ function registrarUsuario(){
     var passwordN = id("passwordN");
 
     const data = new FormData();
+
+    alert(telefonoR.value.trim());
 
     data.append('nombreR', nombreR.value.trim());
     data.append('correoR', correoR.value.trim());

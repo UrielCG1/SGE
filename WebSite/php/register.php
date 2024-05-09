@@ -24,16 +24,17 @@
 </head>
 <body>
 <h2>SGE | Registro de Usuario</h2>
-<div class="wrapper">
-    <form action="" method="post" enctype="multipart/form-data">
+<div class="wrapper" id="divRegister">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
+
                 <label for="nombreR"><i class="las la-user"></i>Nombre</label>
                 <input type="text" id="nombreR" name="nombreR" required>
             </div>
             <div class="col">
                 <label for="correoR"><i class="las la-envelope"></i>Correo Electrónico</label>
-                <input type="email" id="correoR" name="correoR" required>
+                <input type="email" id="correoR" name="correoR" onchange="validarCorreo()" required>
             </div>
         </div>
         <div class="row">
@@ -63,11 +64,11 @@
             </div>
             <div class="col">
                 <label for="passwordC"><i class="las la-address-card"></i>Confirmar contraseña</label>
-                <input type="password" id="passwordC"  name="passwordC">
+                <input type="password" id="passwordC"  name="passwordC" onchange="validarPassword();">
             </div>
         </div>
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="validarFormulario()"><i class="las la-save"></i>Registrarse</button>
+            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="  registrarUsuario()"><i class="las la-save"></i>Registrarse</button>
         </div>
     </form>
 </div>
