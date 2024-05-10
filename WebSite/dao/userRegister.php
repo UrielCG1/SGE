@@ -1,6 +1,6 @@
 <?php
 // Verificar si los datos están presentes y asignarlos de manera segura
-/*
+
 include_once('connection.php');
 require 'daoUsuario.php';
 require 'functions.php';
@@ -101,7 +101,6 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
         }
     }
 }
-*/
 
 /*
  function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password,$token)

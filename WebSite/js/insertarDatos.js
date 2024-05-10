@@ -91,7 +91,7 @@ function registrarUsuario(){
     })
         .then(function (response) {
             if (response.ok) { //respuesta
-                window.location.href = "confirmacionCorreo.php";
+                setTimeout(() => window.location.href = "confirmacionCorreo.php", 15000);
             } else {
                 throw "Error en la llamada Ajax";
             }
