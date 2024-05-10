@@ -32,6 +32,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 30px 40px;
+    width: 80%; /* Ensure the card takes up 80% of the viewport width */
+    max-width: 500px; /* Prevent the card from becoming too wide on larger screens */
 }
 
 .lock-icon {
@@ -50,7 +52,7 @@ p {
 
 .passInput {
     margin-top: 15px;
-    width: 80%;
+    width: 100%; /* Full width of the card */
     background: transparent;
     border: none;
     border-bottom: 2px solid deepskyblue;
@@ -61,15 +63,16 @@ p {
 
 button {
     margin-top: 15px;
-    width: 80%;
+    width: 100%; /* Full width of the card */
     background-color: deepskyblue;
     color: white;
     padding: 10px;
     text-transform: uppercase;
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-/* arrow button */
-
+/* Arrow button */
 .arrow-button {
     position: absolute;
     top: 10px; /* Adjust as needed */
