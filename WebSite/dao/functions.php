@@ -16,6 +16,15 @@ function enviarEmail($email, $nombre,$asunto,$cuerpo)
     require_once '../../PHPMailer/PHPMailerAutoload.php';
 
 
+
+
+
+
+    require 'Phpmailer/Exception.php';
+    require 'Phpmailer/PHPMailer.php';
+    require 'Phpmailer/SMTP.php';
+
+
     $mail= new PHPMailer();
     $mail->isSMTP();
     $mail->Host = 'localhost';
