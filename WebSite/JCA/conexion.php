@@ -1,10 +1,5 @@
 <?php
 // Datos de conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "db_test"; // Nombre de tu base de datos
-
 $conexion = new mysqli('localhost', 'root', '', 'db_test');
 
 // Verificar la conexión
@@ -29,17 +24,26 @@ if ($resultado->num_rows > 0) {
         echo '          <p>Ubicación: ' . $fila['ubicacion'] . '</p>';
         echo '          <p>Capacidad: ' . $fila['capacidad'] . ' personas</p>';
         echo '          <p>Disponibilidad: ' . ($fila['disponibilidad'] == 1 ? 'Disponible' : 'No disponible') . '</p>'; // Verifica la disponibilidad y muestra un texto adecuado
-        echo '          <button onclick="reservarSala(' . $fila['espacioID'] . ')" class="reserva-button">Reservar</button>';
-        echo '          <button class="like-button" onclick="darLike(' . $fila['espacioID'] . ')">Like</button>';
-        echo '          <button class="dislike-button" onclick="darDislike(' . $fila['espacioID'] . ')">Dislike</button>';
-        echo '          <span id="likes-' . $fila['espacioID'] . '">0</span> Likes - ';
-        echo '          <span id="dislikes-' . $fila['espacioID'] . '">0</span> Dislikes';
+        
+        //echo '          <button onclick="reservarSala(' . $fila['espacioID'] . ')" class="reserva-button">Reservar</button>';
+        
+        //echo '          <button onclick="verReseñas()" class="ver-reseñas-button">Ver reseñas</button>'; // Botón para ver reseñas
+        //echo '           <div class="likes-dislikes">';
+          //  echo '          <button class="like-button" onclick="darLike(' . $fila['espacioID'] . ')">Like</button>';
+            //echo '          <button class="dislike-button" onclick="darDislike(' . $fila['espacioID'] . ')">Dislike</button>';
+            //echo '       </div>';
+        //echo '<div class="likes-count">';
+          //  echo '          <span id="likes-1">0</span> Me Gusta -';
+          //  echo '          <span id="dislikes-1">0</span> No Me gusta';
+        //echo '</div>';
         echo '        </div>';
         echo '      </div>';
+    
     }
     echo '    </div>';
     echo '  </div>';
     echo '</main>';
+    
 } else {
     echo 'No se encontraron habitaciones.';
 }

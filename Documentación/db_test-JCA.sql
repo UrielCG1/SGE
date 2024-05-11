@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 12:43 AM
+-- Generation Time: May 11, 2024 at 05:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,7 +48,7 @@ INSERT INTO `espacios` (`espacioID`, `nombreEspacio`, `descripcion`, `tipoEspaci
 (114, 'Salas de entrevistas', 'Espacios discretos para entrevistas de trabajo con candidatos.\r\n', 'Sala', 1, 'Edificio 2, piso 2', 10),
 (115, 'Salas de capacitación', 'Espacios equipados con tecnología audiovisual para sesiones de formación y desarrollo.', 'Sala', 1, 'Edificio 1, piso 4.', 30),
 (116, 'Oficinas', 'Oficinas privadas para trabajadores que necesitan concentración o privacidad. La cual cuentan con monitor y todo el equipo necesario.', 'Oficina', 1, 'Edificio 3, Piso 3.', 30),
-(117, 'Cubículos', 'Espacios semi-privados con divisiones para trabajadores que necesitan un espacio propio pero no una oficina cerrada.', 'Oficina', 1, 'Edifico 3, Piso 3.', 50);
+(117, 'Cubículos', 'Espacios semi-privados con divisiones para trabajadores que necesitan un espacio propio pero no una oficina cerrada.', 'Oficina', 0, 'Edifico 3, Piso 3.', 50);
 
 --
 -- Triggers `espacios`
@@ -80,13 +80,13 @@ CREATE TABLE `evaluacion_espacio` (
 --
 
 INSERT INTO `evaluacion_espacio` (`evaluacionID`, `espacioID_key`, `comentarios`, `meGusta`, `noGusta`) VALUES
-(1, 111, NULL, 0, 0),
-(2, 112, NULL, 0, 0),
-(3, 113, NULL, 0, 0),
-(4, 114, NULL, 0, 0),
-(5, 115, NULL, 0, 0),
-(6, 116, NULL, 0, 0),
-(7, 117, NULL, 0, 0);
+(1, 111, '[{\"cliente\": \"Maria\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Mario\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Pedro\", \"comentario\": \"Esta Feo!!!\"}, {\"cliente\": \"agua\", \"comentario\": \"siiiiuuuuu\"}, {\"cliente\": \"Alicia\", \"comentario\": \"Muy bien!!!\"}]', 2, 0),
+(2, 112, '[{\"cliente\": \"Pedro\", \"comentario\": \"Otro comentario\", \"sala\": \"Nombre de la sala\"}, {\"cliente\": \"Jose\", \"comentario\": \"Esta Piola\"}]', 0, 0),
+(3, 113, '[{\"cliente\": \"Juan\", \"comentario\": \"Esta Bien\"}, {\"cliente\": \"Pepe\", \"comentario\": \"Esta Muy Mal\"}, {\"cliente\": \"Copper\", \"comentario\": \"Feo, Fuerte y Formal\"}]', 0, 0),
+(4, 114, '[{\"cliente\": \"Jesus\", \"comentario\": \"Esta buenardo\"}, {\"cliente\": \"Paco\", \"comentario\": \"Vaya si que le faltan cosas\"}, {\"cliente\": \"Russel\", \"comentario\": \"Esta pagina esta horrible\"}]', 0, 0),
+(5, 115, '[{\"cliente\": \"OP\", \"comentario\": \"PRUEBA\"}, {\"cliente\": \"Fernando\", \"comentario\": \"Esta mejor que otras salas!!!!\"}]', 0, 0),
+(6, 116, '[{\"cliente\": \"Osvaldo\", \"comentario\": \"No esta tan bien :c\"}, {\"cliente\": \"Leonardo\", \"comentario\": \"Esta regular\"}]', 0, 0),
+(7, 117, '[{\"cliente\": \"Yes Man\", \"comentario\": \"gud\"}, {\"cliente\": \"Kimbal\", \"comentario\": \"RNC Rules!!\"}, {\"cliente\": \"Enrique\", \"comentario\": \"Gracias por el servicio!!!\"}]', 0, 0);
 
 --
 -- Indexes for dumped tables

@@ -21,17 +21,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link text-white" href="#">Pantalla Principal</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Features</a>
+                  <a class="nav-link text-white" href="#"></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled text-white" href="#">Disabled</a>
-                </li>
+                
               </ul>
             </div>
           </nav>
@@ -43,6 +38,28 @@
                 include 'conexion.php';
               ?>
             </div>
+
+            <div class="ingresarComentario">
+                <button id="btnIngresarComentario">Ingresar Comentario</button>
+            </div>
+            <!--JS  para mandar a otra ventana para ingresar los comentarios-->
+            <script>
+              document.getElementById("btnIngresarComentario").addEventListener("click", function() {
+                window.location.href = "ingresarComentario.php";
+              });
+            </script>
+
+            <div class="comentarios">
+              
+              <?php
+                // Establecer la conexión a la base de datos y obtener los datos del array
+                // $comentarios_array = ...; (código para obtener el array)
+                // Incluir el archivo que contiene el contenido del body
+                include 'imprimirJSON.php';
+              ?>
+
+            </div>
+
           </main>
           
     </body>
