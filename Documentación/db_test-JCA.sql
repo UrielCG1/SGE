@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2024 at 05:37 AM
+-- Generation Time: May 11, 2024 at 05:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -80,7 +80,6 @@ CREATE TABLE `evaluacion_espacio` (
 --
 
 INSERT INTO `evaluacion_espacio` (`evaluacionID`, `espacioID_key`, `comentarios`, `meGusta`, `noGusta`) VALUES
-<<<<<<< HEAD
 (1, 111, '[{\"cliente\": \"Maria\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Mario\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Pedro\", \"comentario\": \"Esta Feo!!!\"}, {\"cliente\": \"agua\", \"comentario\": \"siiiiuuuuu\"}, {\"cliente\": \"Alicia\", \"comentario\": \"Muy bien!!!\"}]', 2, 0),
 (2, 112, '[{\"cliente\": \"Pedro\", \"comentario\": \"Otro comentario\", \"sala\": \"Nombre de la sala\"}, {\"cliente\": \"Jose\", \"comentario\": \"Esta Piola\"}]', 0, 0),
 (3, 113, '[{\"cliente\": \"Juan\", \"comentario\": \"Esta Bien\"}, {\"cliente\": \"Pepe\", \"comentario\": \"Esta Muy Mal\"}, {\"cliente\": \"Copper\", \"comentario\": \"Feo, Fuerte y Formal\"}]', 0, 0),
@@ -88,15 +87,6 @@ INSERT INTO `evaluacion_espacio` (`evaluacionID`, `espacioID_key`, `comentarios`
 (5, 115, '[{\"cliente\": \"OP\", \"comentario\": \"PRUEBA\"}, {\"cliente\": \"Fernando\", \"comentario\": \"Esta mejor que otras salas!!!!\"}]', 0, 0),
 (6, 116, '[{\"cliente\": \"Osvaldo\", \"comentario\": \"No esta tan bien :c\"}, {\"cliente\": \"Leonardo\", \"comentario\": \"Esta regular\"}]', 0, 0),
 (7, 117, '[{\"cliente\": \"Yes Man\", \"comentario\": \"gud\"}, {\"cliente\": \"Kimbal\", \"comentario\": \"RNC Rules!!\"}, {\"cliente\": \"Enrique\", \"comentario\": \"Gracias por el servicio!!!\"}]', 0, 0);
-=======
-(1, 111, '[{\"cliente\": \"Maria\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Mario\", \"comentario\": \"Esta Piola\"}, {\"cliente\": \"Pedro\", \"comentario\": \"Esta Feo!!!\"}]', 2, 0),
-(2, 112, '[{\"cliente\": \"Pedro\", \"comentario\": \"Otro comentario\", \"sala\": \"Nombre de la sala\"}, {\"cliente\": \"Jose\", \"comentario\": \"Esta Piola\"}]', 0, 0),
-(3, 113, '[{\"cliente\": \"Juan\", \"comentario\": \"Esta Bien\"}, {\"cliente\": \"Pepe\", \"comentario\": \"Esta Muy Mal\"}]', 0, 0),
-(4, 114, '[{\"cliente\": \"Jesus\", \"comentario\": \"Esta buenardo\"}, {\"cliente\": \"Paco\", \"comentario\": \"Vaya si que le faltan cosas\"}, {\"cliente\": \"Russel\", \"comentario\": \"Esta pagina esta horrible\"}]', 0, 0),
-(5, 115, '[{\"cliente\": \"OP\", \"comentario\": \"PRUEBA\"}, {\"cliente\": \"Fernando\", \"comentario\": \"Esta mejor que otras salas!!!!\"}]', 0, 0),
-(6, 116, '[{\"cliente\": \"Osvaldo\", \"comentario\": \"No esta tan bien :c\"}, {\"cliente\": \"Leonardo\", \"comentario\": \"Esta regular\"}]', 0, 0),
-(7, 117, '[{\"cliente\": \"Yes Man\", \"comentario\": \"gud\"}, {\"cliente\": \"Kimbal\", \"comentario\": \"RNC Rules!!\"}]', 0, 0);
->>>>>>> 16f62e962d2423e16eb17a3625c51304bacdaf18
 
 --
 -- Indexes for dumped tables
