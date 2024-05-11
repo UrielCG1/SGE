@@ -103,3 +103,20 @@ function registrarUsuario(){
             console.log(err);
         });
 }
+
+function validarTelefono() {
+    var telefonoInput = document.getElementById('telefonoR');
+    var telefono = telefonoInput.value;
+    // Expresión regular para validar un número de teléfono local de 10 dígitos
+    var telefonoRegExp = /^\d{10}$/;
+
+    if (telefonoRegExp.test(telefono)) {
+        // El número de teléfono es válido
+        telefonoInput.setCustomValidity('');
+    } else {
+        // El número de teléfono no es válido
+        telefonoInput.setCustomValidity('Por favor, introduce un número de teléfono válido de 10 dígitos.');
+    }
+}
+
+

@@ -1,14 +1,24 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once('connection.php');
+require 'daoUsuario.php';
+require 'Phpmailer/Exception.php';
+require 'Phpmailer/PHPMailer.php';
+require 'Phpmailer/SMTP.php';
+
+
 // Verificar si los datos están presentes y asignarlos de manera segura
 if(isset( $_POST['nombreR'], $_POST['correoR'],$_POST['passwordN'], $_POST['telefonoR'], $_POST['empresaR'], $_POST['numEmpleado'], $_FILES['fotoR'])) {
-
-
     $nombre = $_POST['nombreR'];
     $correo = $_POST['correoR'];
     $telefono = $_POST['telefonoR'];
     $empresa = $_POST['empresaR'];
     $noEmpleado = $_POST['numEmpleado'];
+    $password = $_POST['passwordN'];
 
     $fechaActual = date('Y-m-d_H-i-s');
     $target_dir = "../images/usuarios/";
@@ -25,7 +35,8 @@ if(isset( $_POST['nombreR'], $_POST['correoR'],$_POST['passwordN'], $_POST['tele
     }
 
     // Agregar la extensión al nombre de la imagen
-    $img = $target_dir . $imgName . '.' . $extension;
+    $target_dirCompleto = "http://localhost/SGE/WebSite/images/usuarios/";
+    $img = $target_dirCompleto . $imgName . '.' . $extension;
 
     // Mover el archivo subido a la carpeta destino
     if (!move_uploaded_file($_FILES['fotoR']['tmp_name'], $img)) {
@@ -46,7 +57,7 @@ if(isset( $_POST['nombreR'], $_POST['correoR'],$_POST['passwordN'], $_POST['tele
 function RegistrarUsuario($nombre, $correo, $telefono, $img, $empresa, $noEmpleado, $password)
 {
     $passwordS = sha1($password);
-    $resultado = Usuario($Nomina);
+    $resultado = Usuario($noEmpleado);
 
     if ($resultado['success']) {
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=http://localhost/SGE/WebSite/php/register.php'>";
@@ -59,6 +70,8 @@ function RegistrarUsuario($nombre, $correo, $telefono, $img, $empresa, $noEmplea
         $insertUsuario = "INSERT INTO `usuarios` (`nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `numEmpleado`) 
                                           VALUES ('$nombre', '$correo', '$passwordS', '$telefono', '$empresa', '$img', '$noEmpleado')";
         $rInsertUsuario = mysqli_query($conex, $insertUsuario);
+
+        echo $rInsertUsuario;
 
         mysqli_close($conex);
 
