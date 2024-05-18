@@ -9,8 +9,6 @@ function Usuario($noEmpleado){
     $consP="SELECT userId, fotoUsuario, nombreCompleto, password,email,telefono, empresa,fk_idRol,numEmpleado FROM usuarios WHERE numEmpleado = '$noEmpleado'";
     $rsconsPro=mysqli_query($conexion,$consP);
 
-    echo ("holis");
-
     mysqli_close($conexion);
 
     if(mysqli_num_rows($rsconsPro) == 1){

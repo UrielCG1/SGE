@@ -11,20 +11,25 @@ function generateToken()
     return $gen;
 }
 
+use PHPMailer\dao\Phpmailer\Exception;
+use PHPMailer\dao\Phpmailer\PHPMailer;
+use PHPMailer\dao\Phpmailer\SMTP;
+
 function enviarEmail($email, $nombre,$asunto,$cuerpo)
 {
-    require_once '../../PHPMailer/PHPMailerAutoload.php';
-
+    require_once 'Phpmailer/Exception.php';
+    require_once 'Phpmailer/PHPMailer.php';
+    require_once 'Phpmailer/SMTP.php';
 
     $mail= new PHPMailer();
     $mail->isSMTP();
-    $mail->Host = 'localhost';
-    $mail->Port = 3306;
+    $mail->Host = 'smtp.hostinger.com';
+    $mail->Port = 465;
     $mail->SMTPAuth = true;
-    $mail->Username = 'sge.tecnm@gmail.com'; //Correo de quien envia el email
-    $mail->Password = 'sge2024s';
+    $mail->Username = 'LaboratorioMetrologiaGrammer@arketipo.mx'; //Correo de quien envia el email
+    $mail->Password = 'LMGrammer2024#';
     $mail->SMTPSecure = 'ssl';
-    $mail->setFrom('sge.tecnm@gmail.com', 'Sistema de Gestión de Espacios');
+    $mail->setFrom('LaboratorioMetrologiaGrammer@arketipo.mx', 'Sistema de Gestión de Espacios');
     $mail->CharSet = 'UTF-8';
 
     //Solicitante
