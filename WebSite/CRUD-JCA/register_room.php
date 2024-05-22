@@ -1,8 +1,9 @@
 <?php
-$servername = "localhost";  // Cambiar si es necesario
-$username = "root";         // Cambiar si es necesario
-$password = "";             // Cambiar si es necesario
-$dbname = "db_test";        // Cambiar si es necesario
+//DATOS DE LA BASE DE DATOS EN XAMPP
+$servername = "localhost";  
+$username = "root";         
+$password = "";             
+$dbname = "db_test";        
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
