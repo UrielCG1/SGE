@@ -4,48 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Nueva Sala</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body onload="esActualizacionPrueba()">
     <div class="container wrapper">
         <div id="divH1"><h1>Registrar Nueva Sala</h1> </div>
+
         <form action="" method="post">
-            <div class="row">
-                <div class="col">
-                    <label for="nombreEspacio">Nombre de la Sala:</label>
-                    <input type="text" id="nombreEspacio" name="nombreEspacio" required>
-                </div>
-                <div class="col">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" required></textarea>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+            <table CLASS="table table-borderless">
+                <tbody>
+                <tr>
+                    <td colspan="2">
+                        <label for="nombreEspacio">Nombre de la Sala:</label>
+                        <input type="text" id="nombreEspacio" name="nombreEspacio" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
                         <label for="tipoEspacio">Tipo de Sala:</label>
                         <input type="text" id="tipoEspacio" name="tipoEspacio" required>
-                    </div>
-                    <div class="col-sm-6">
+                    </td>
+                    <td >
                         <label for="ubicacion">Ubicación:</label>
                         <input type="text" id="ubicacion" name="ubicacion">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label for="disponibilidad">Disponibilidad (1 para disponible, 0 para no disponible):</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="disponibilidad">Disponibilidad  <small>(1 para SÍ, 0 para NO)</small>:</label>
                         <input type="number" id="disponibilidad" name="disponibilidad" min="0" max="1" required>
 
-                    <div class="col-sm-6">
+                    </td>
+                    <td>
                         <label for="capacidad">Capacidad:</label>
                         <input type="number" id="capacidad" name="capacidad" required>
-                    </div>
-                </div>
-            </div>
-                <div class="col align-items-center">
-                    <button type="submit" id="submitSala" onclick="registrarSala()">Registrar Sala</button>
-                    <button type="submit" id="updateSala" onclick="actualizarSala(id_update)">Actualizar Sala</button>
-                </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="boton" id="submitSala" onclick="registrarSala()">Registrar Sala</button>
+                        <button type="submit" class="boton"  id="updateSala" onclick="actualizarSala(id_update)">Actualizar Sala</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </form>
     </div>
 </body>

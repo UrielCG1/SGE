@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/edificios.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -47,6 +47,7 @@ input[type="email"],
 input[type="tel"],
 input[type="file"],
 input[type="password"],
+input[type="number"],
 textarea {
     width: 100%;
     padding: 8px;
@@ -176,3 +177,15 @@ fotoR::file-selector-button {
   #divH1 h1{
       color: white;
   }
+
+
+td {
+    text-align: center;
+}
+
+button {
+    margin: 5px;
+}
+small{
+    font-size: 0.8rem;
+}
