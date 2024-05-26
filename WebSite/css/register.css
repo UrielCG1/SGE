@@ -172,3 +172,7 @@ fotoR::file-selector-button {
     text-decoration: none;
     color: #fff;
   }
+
+  #divH1 h1{
+      color: white;
+  }
