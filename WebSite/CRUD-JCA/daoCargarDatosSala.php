@@ -6,11 +6,10 @@ if (isset($_GET['id_sala']) && is_numeric($_GET['id_sala'])) {
     $id_sala = intval($_GET['id_sala']);
     resumenSala($id_sala);
 } else {
-    echo json_encode(array("error" => "Parámetro inválido"));
-    exit;
+    resumenTodasLasSalas();
 }
 
-function resumenSala($id_sala){
+function resumenSala($id_sala) {
     $con = new LocalConector();
     $conex = $con->conectar();
 
@@ -40,4 +39,26 @@ function resumenSala($id_sala){
     $conex->close();
 }
 
+function resumenTodasLasSalas() {
+    $con = new LocalConector();
+    $conex = $con->conectar();
+
+    if ($conex->connect_error) {
+        echo json_encode(array("error" => "Error de conexión: " . $conex->connect_error));
+        exit;
+    }
+
+    $result = $conex->query("SELECT * FROM `espacios`");
+
+    if (!$result) {
+        echo json_encode(array("error" => "Error en la consulta: " . $conex->error));
+        exit;
+    }
+
+    $resultado = $result->fetch_all(MYSQLI_ASSOC);
+
+    echo json_encode(array("data" => $resultado));
+
+    $conex->close();
+}
 ?>
