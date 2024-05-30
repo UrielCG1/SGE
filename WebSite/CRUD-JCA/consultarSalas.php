@@ -58,14 +58,14 @@
     <table id="tablaSalas" class="table table-striped table-bordered" style="width:100%">
         <thead class="thead-dark">
         <tr>
-            <th>No.</th>
-            <th>Sala</th>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Disponibilidad</th>
-            <th>Ubicación</th>
-            <th>Capacidad</th>
-            <th>Acciones</th>
+            <th class="centrado">No.</th>
+            <th  class="centrado">Sala</th>
+            <th  class="centrado">Descripción</th>
+            <th  class="centrado">Tipo</th>
+            <th  class="centrado">Disponibilidad</th>
+            <th  class="centrado">Ubicación</th>
+            <th  class="centrado">Capacidad</th>
+            <th  class="centrado">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -88,7 +88,7 @@
     const dataTableOptions = {
         lengthMenu: [10, 20, 50, 100],
         columnDefs:[
-            {className: "centered", targets: [0,1,2,3,4,5,6,7]},
+            {className: "centrado", targets: [0,1,2,3,4,5,6,7]},
             {orderable: false, targets: [7]},
             {width: "5%", targets: [0,6]},
             {width: "20%", targets: [7]},
