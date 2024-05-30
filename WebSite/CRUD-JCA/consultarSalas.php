@@ -9,6 +9,7 @@
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container mt-4">
@@ -57,10 +58,10 @@
     <table id="tablaSalas" class="table table-striped table-bordered" style="width:100%">
         <thead class="thead-dark">
         <tr>
-            <th>ID Sala</th>
-            <th>Nombre de la Sala</th>
+            <th>No.</th>
+            <th>Sala</th>
             <th>Descripción</th>
-            <th>Tipo de Sala</th>
+            <th>Tipo</th>
             <th>Disponibilidad</th>
             <th>Ubicación</th>
             <th>Capacidad</th>
@@ -83,8 +84,39 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#tablaSalas').DataTable({
+    //Funcion para darte estilo al dataTable
+    const dataTableOptions = {
+        lengthMenu: [10, 20, 50, 100],
+        columnDefs:[
+            {className: "centered", targets: [0,1,2,3,4,5,6,7]},
+            {orderable: false, targets: [7]},
+            {width: "5%", targets: [0,6]},
+            {width: "20%", targets: [7]},
+            {searchable: true, targets: [0,1,2,3,4,5,6] }
+        ],
+        pageLength:10,
+        destroy: true,
+        language:{
+            lengthMenu: "Mostrar _MENU_ registros pór página",
+            sZeroRecords: "Ninguna sala encontrada",
+            info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
+            infoEmpty: "Ninguna sala encontrada",
+            infoFiltered: "(filtrados desde _MAX_ registros totales)",
+            search: "Buscar: ",
+            loadingRecords: "Cargando...",
+            paginate:{
+                first:"Primero",
+                last: "Último",
+                next: "Siguiente",
+                previous: "Anterior"
+            }
+        }
+    };
+
+
+    $(document).ready(function() {
+        $('#tablaSalas').DataTable({
+            ...dataTableOptions,
         "ajax": {
             "url": "daoCargarDatosSala.php", 
             "dataSrc": function (json) {
@@ -122,6 +154,7 @@ $(document).ready(function() {
         ]
     });
 });
+
 
 </script>
 
