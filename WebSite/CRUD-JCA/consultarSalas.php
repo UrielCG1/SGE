@@ -135,8 +135,8 @@
                         "Ubicación": sala.ubicacion,
                         "Capacidad": sala.capacidad,
                         "Acciones": `
-                            <a href="registrarSala.php?id_sala=${sala.espacioId}" class="action-link update-link btn btn-warning">Actualizar</a>
-                            <a href="eliminarSala.php?id=${sala.espacioId}" class="btn btn-danger">Eliminar</a>
+                            <a href="registrarSala.php?id_sala=${sala.espacioId}" class="action-link update-link btn btn-warning btnSalas">Actualizar</a>
+                            <a href="eliminarSala.php?id=${sala.espacioId}" class="btn btn-danger btnSalas">Eliminar</a>
                         `
                     };
                 });

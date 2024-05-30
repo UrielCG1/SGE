@@ -38,6 +38,9 @@ label {
     border-radius: 5px ;
     font-size: 1.2rem;
 }
+.btnSalas{
+    font-size: 0.8rem;
+}
 
 .boton:hover {
     background-color: #218838;
@@ -45,4 +48,5 @@ label {
 .centrado{
     text-align: center !important;
     vertical-align: middle !important;
+    font-size: 0.9rem !important;
 }
