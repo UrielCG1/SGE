@@ -1,0 +1,143 @@
+/* Estilos generales */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    margin-bottom: 10px;
+  }
+  
+  .imagen-sala img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .detalles-sala {
+    margin-top: 20px;
+  }
+  
+  #resenas-sala form {
+    margin-top: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  
+  .bg-dark-gray {
+    background-color: #333;
+  }
+  .container {
+    margin-top: 20px;
+  }
+  
+  .sala {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .sala img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .ver-reseñas-button {
+    background-color: #007bff; /* Color azul */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Espacio entre el botón y otros elementos */
+  }
+
+  .ver-reseñas-button:hover {
+      background-color: gray; /* Color azul más oscuro en hover */
+  }
+
+  .like-button{
+    background-color: green; /* Color azul */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Espacio entre el botón y otros elementos */
+  }
+  .like-button:hover {
+    background-color: gray;
+  }
+
+  .dislike-button{
+    background-color: red; /* Color azul */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Espacio entre el botón y otros elementos */
+  }
+  .dislike-button:hover {
+    background-color: gray;
+  }
+  .likes-count span {
+    font-size: 34px; /* Tamaño de fuente para los números */
+    margin-left: 5px; /* Espacio entre los números y los botones */
+  }
+  .comentarios {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .comentarios h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+/* Estilos para el contenedor */
+.ingresarComentario {
+  display: flex; /* Utiliza flexbox para alinear elementos internos */
+  justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  height: 50vh; /* Altura del contenedor, ajusta según sea necesario */
+}
+
+/* Estilos para el botón */
+#btnIngresarComentario {
+  background-color: green; /* Color de fondo del botón (azul en este caso) */
+  color: #fff; /* Color del texto del botón (blanco en este caso) */
+  padding: 8px 16px; /* Espaciado interno del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+/* Estilo al pasar el cursor sobre el botón */
+#btnIngresarComentario:hover {
+  background-color: gray; /* Color de fondo más oscuro al pasar el cursor */
+}
+  
