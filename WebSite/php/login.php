@@ -24,7 +24,7 @@
         <button class="btn btn-secundary"><a href="register.php">Registrar</a></button>
       </div>
       <div class="pass">
-        <a href="olvidaste_contraseña.php">Olvidaste contraseña</a>
+        <a href="http://localhost/WebSite/forgotpass.html">Olvidaste contraseña</a>
       </div>   
     </form>
 </div>

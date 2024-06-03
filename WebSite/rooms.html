@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Reservation</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="reservation.css">
+    <!-- Bootstrap Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="mb-4">Make a Room Reservation</h2>
+    <form id="reservationForm">
+        <div class="form-group">
+            <label for="userName">Your Name:</label>
+            <input type="text" class="form-control" id="userName" required>
+        </div>
+        <div class="form-group">
+            <label for="roomType">Select Room Type:</label>
+            <select class="form-control" id="roomType">
+                <option value="">--Please choose an option--</option>
+                <option value="single">Single Room</option>
+                <option value="double">Double Room</option>
+                <option value="suite">Suite</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date">Reservation Date:</label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control" id="date">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="time" class="form-control" id="startTime" required>
+        </div>
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="time" class="form-control" id="endTime" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Reserve Now</button>
+    </form>
+    
+    <!-- Section to display current reservations -->
+    <hr>
+    <h3>Current Reservations</h3>
+    <ul id="currentReservations">
+        <!-- Reservations will be dynamically added here -->
+    </ul>
+</div>
+
+<!-- jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(function () {
+        // Function to retrieve reservations from cookies
+        function getReservationsFromCookies() {
+            const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)reservations\s*=\s*([^;]*).*$)|^.*$/, "$1");
+            return cookieValue ? JSON.parse(cookieValue) : [];
+        }
+
+        // Function to save reservations to cookies
+        function saveReservationsToCookies(reservations) {
+            document.cookie = `reservations=${JSON.stringify(reservations)}; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/;`;
+        }
+
+        // Function to display reservations
+        function displayReservations(reservations) {
+            $('#currentReservations').empty();
+            reservations.forEach(reservation => {
+                const listItem = $('<li></li>').addClass('reservation-item');
+                listItem.append(`${reservation.userName}: ${reservation.roomType} - ${reservation.date} (${reservation.startTime} to ${reservation.endTime})`);
+
+                const releaseButton = $('<button>').addClass('btn btn-danger btn-sm').text('Release');
+                releaseButton.click(function() {
+                    const index = reservations.findIndex(r => r.date === reservation.date && r.startTime === reservation.startTime);
+                    if (index !== -1) {
+                        reservations.splice(index, 1);
+                        saveReservationsToCookies(reservations);
+                        displayReservations(reservations);
+                    }
+                });
+
+                listItem.append(releaseButton);
+                $('#currentReservations').append(listItem);
+            });
+        }
+
+        // Function to add reservation
+        function addReservation(reservation) {
+            const reservations = getReservationsFromCookies();
+            reservations.push(reservation);
+            saveReservationsToCookies(reservations);
+            displayReservations(reservations);
+        }
+
+        // Display existing reservations when page loads
+        displayReservations(getReservationsFromCookies());
+
+        $('#date').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '+0d'
+        });
+
+        // Handle form submission
+        $('#reservationForm').on('submit', function(e) {
+            e.preventDefault();
+            const userName = $('#userName').val();
+            const roomType = $('#roomType').val();
+            const date = $('#date').val();
+            const startTime = $('#startTime').val();
+            const endTime = $('#endTime').val();
+
+            const reservation = {
+                userName: userName,
+                roomType: roomType,
+                date: date,
+                startTime: startTime,
+                endTime: endTime
+            };
+
+            addReservation(reservation);
+
+            // Clear form fields
+            $('#userName').val('');
+            $('#roomType').val('');
+            $('#date').val('');
+            $('#startTime').val('');
+            $('#endTime').val('');
+        });
+    });
+</script>
+</body>
+</html>

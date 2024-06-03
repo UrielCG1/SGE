@@ -1,0 +1,33 @@
+/* style.css */
+body {
+    background-color: #f4f7f6;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+body {
+    background-image: url('\images\sala4.jpg');
+    background-size: cover; /* Adjust this property to control how the background image is displayed */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This property ensures the background image stays fixed while the content scrolls */
+}
+
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    width: 100%;
+}
