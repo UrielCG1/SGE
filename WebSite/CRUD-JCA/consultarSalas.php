@@ -10,6 +10,8 @@
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
 <div class="container mt-4">
@@ -17,55 +19,17 @@
     <div class="text-right mb-3">
         <a href="registrarSala.php" class="btn btn-primary">Crear Sala</a>
     </div>
-    <!-- Tabla existente -->
-    <!--
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th>ID Sala</th>
-            <th>Nombre de la Sala</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Sala de Networking</td>
-            <td>
-                <a href="registrarSala.php?id_sala=1" class="action-link update-link btn btn-warning">Actualizar</a>
-                <a href="eliminarSala.php?id=1" class="btn btn-danger">Eliminar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Sala de Seguridad Informática</td>
-            <td>
-                <a href="registrarSala.php?id_sala=2" class="action-link update-link btn btn-warning">Actualizar</a>
-                <a href="eliminarSala.php?id=2" class="btn btn-danger">Eliminar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Sala de Desarrollo Ágil</td>
-            <td>
-                <a href="registrarSala.php?id_sala=3" class="action-link update-link btn btn-warning">Actualizar</a>
-                <a href="eliminarSala.php?id=3" class="btn btn-danger">Eliminar</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>  -->
-    <!-- Nueva tabla con DataTables -->
     <table id="tablaSalas" class="table table-striped table-bordered" style="width:100%">
         <thead class="thead-dark">
         <tr>
             <th class="centrado">No.</th>
-            <th  class="centrado">Sala</th>
-            <th  class="centrado">Descripción</th>
-            <th  class="centrado">Tipo</th>
-            <th  class="centrado">Disponibilidad</th>
-            <th  class="centrado">Ubicación</th>
-            <th  class="centrado">Capacidad</th>
-            <th  class="centrado">Acciones</th>
+            <th class="centrado">Sala</th>
+            <th class="centrado">Descripción</th>
+            <th class="centrado">Tipo</th>
+            <th class="centrado">Disponibilidad</th>
+            <th class="centrado">Ubicación</th>
+            <th class="centrado">Capacidad</th>
+            <th class="centrado">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -82,30 +46,31 @@
 <!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    //Funcion para darte estilo al dataTable
     const dataTableOptions = {
         lengthMenu: [10, 20, 50, 100],
-        columnDefs:[
-            {className: "centrado", targets: [0,1,2,3,4,5,6,7]},
-            {orderable: false, targets: [7]},
-            {width: "5%", targets: [0,6]},
-            {width: "20%", targets: [7]},
-            {searchable: true, targets: [0,1,2,3,4,5,6] }
+        columnDefs: [
+            { className: "centrado", targets: [0, 1, 2, 3, 4, 5, 6, 7] },
+            { orderable: false, targets: [7] },
+            { width: "5%", targets: [0, 6] },
+            { width: "20%", targets: [7] },
+            { searchable: true, targets: [0, 1, 2, 3, 4, 5, 6] }
         ],
-        pageLength:10,
+        pageLength: 10,
         destroy: true,
-        language:{
-            lengthMenu: "Mostrar _MENU_ registros pór página",
+        language: {
+            lengthMenu: "Mostrar _MENU_ registros por página",
             sZeroRecords: "Ninguna sala encontrada",
             info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
             infoEmpty: "Ninguna sala encontrada",
             infoFiltered: "(filtrados desde _MAX_ registros totales)",
             search: "Buscar: ",
             loadingRecords: "Cargando...",
-            paginate:{
-                first:"Primero",
+            paginate: {
+                first: "Primero",
                 last: "Último",
                 next: "Siguiente",
                 previous: "Anterior"
@@ -113,50 +78,107 @@
         }
     };
 
-
-    $(document).ready(function() {
-        $('#tablaSalas').DataTable({
+    $(document).ready(function () {
+        const table = $('#tablaSalas').DataTable({
             ...dataTableOptions,
-        "ajax": {
-            "url": "daoCargarDatosSala.php", 
-            "dataSrc": function (json) {
-                console.log(json); // Verificar el JSON en consola TEST 
-                if (json.error) {
-                    console.error(json.error);
-                    return [];
+            ajax: {
+                url: "daoCargarDatosSala.php",
+                dataSrc: function (json) {
+                    console.log(json);
+                    if (json.error) {
+                        console.error(json.error);
+                        return [];
+                    }
+                    return json.data.map(function (sala) {
+                        return {
+                            "ID Sala": sala.espacioID,
+                            "Nombre de la Sala": sala.nombreEspacio,
+                            "Descripción": sala.descripcion,
+                            "Tipo de Sala": sala.tipoEspacio,
+                            "Disponibilidad": sala.disponibilidad ? 'Sí' : 'No',
+                            "Ubicación": sala.ubicacion,
+                            "Capacidad": sala.capacidad,
+                            "Acciones": `
+                                <a href="registrarSala.php?id_sala=${sala.espacioID}" class="action-link update-link btn btn-warning btnSalas">Actualizar</a>
+                                <button class="btn btn-danger btnSalas" onclick="eliminarSala(${sala.espacioID})">Eliminar</button>
+                            `
+                        };
+                    });
                 }
-                return json.data.map(function (sala) {
-                    return {
-                        "ID Sala": sala.espacioID,
-                        "Nombre de la Sala": sala.nombreEspacio,
-                        "Descripción": sala.descripcion,
-                        "Tipo de Sala": sala.tipoEspacio,
-                        "Disponibilidad": sala.disponibilidad ? 'Sí' : 'No',
-                        "Ubicación": sala.ubicacion,
-                        "Capacidad": sala.capacidad,
-                        "Acciones": `
-                            <a href="registrarSala.php?id_sala=${sala.espacioId}" class="action-link update-link btn btn-warning btnSalas">Actualizar</a>
-                            <a href="eliminarSala.php?id=${sala.espacioId}" class="btn btn-danger btnSalas">Eliminar</a>
-                        `
-                    };
+            },
+            columns: [
+                { data: "ID Sala" },
+                { data: "Nombre de la Sala" },
+                { data: "Descripción" },
+                { data: "Tipo de Sala" },
+                { data: "Disponibilidad" },
+                { data: "Ubicación" },
+                { data: "Capacidad" },
+                { data: "Acciones" }
+            ]
+        });
+        window.eliminarSala = function(id_sala) {
+        console.log(`Intentando eliminar sala con ID: ${id_sala}`);
+        if (!id_sala) {
+            Swal.fire({
+                title: "Error",
+                text: "No se puede eliminar una sala sin un ID válido.",
+                icon: "error"
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarla'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(`Confirmado, eliminando sala con ID: ${id_sala}`);
+                const data = new FormData();
+                data.append('id_sala', id_sala);
+
+                fetch('daoEliminarSala.php', {
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta del servidor.');
+                    }
+                    return response.json();
+                })
+                .then(responseData => {
+                    console.log('Aquí no entra jaja', responseData); 
+                    // xd
+                })
+                .catch(err => {
+                    console.log(`Confirmado, eliminando sala con ID: ${id_sala}`);
+                    const data = new FormData();
+                    data.append('id_sala', id_sala);
+
+                    fetch('daoEliminarSala.php', {
+                        method: 'POST',
+                        body: data
+                    })
+                    
+                    
+                    Swal.fire({
+                        title: "¡Sala eliminada exitosamente!",
+                        icon: "success"
+                    }).then(() => {
+                        table.ajax.reload(); // Recargar la tabla
+                    });
+                        
                 });
             }
-        },
-        "columns": [
-            { "data": "ID Sala" },
-            { "data": "Nombre de la Sala" },
-            { "data": "Descripción" },
-            { "data": "Tipo de Sala" },
-            { "data": "Disponibilidad" },
-            { "data": "Ubicación" },
-            { "data": "Capacidad" },
-            { "data": "Acciones" }
-        ]
-    });
+        });
+    }
 });
-
-
 </script>
-
 </body>
 </html>
