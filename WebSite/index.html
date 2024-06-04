@@ -174,6 +174,10 @@
           <div class="offcanvas-body text-hover light-border">
             <ul id="navbar"
               class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
+
+              <li class="nav-item pe-4">
+                <a class="nav-link light text-uppercase active" href="#"><strong><?php echo $nombreUser; ?></strong></a>
+              </li>
               <li class="nav-item pe-4">
                 <a class="nav-link light text-uppercase active" href="index.html"><strong>Home</strong></a>
               </li>
@@ -184,11 +188,11 @@
                 <a class="nav-link light text-uppercase" href="#booking-wrap"><strong>Buscar por fecha</strong></a>
               </li>
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="#contact">Contacto</a>
+                <a class="nav-link light text-uppercase" href="#contact"><strong>Contacto</strong></a>
               </li>
               <?php global $tipoUser; if ($tipoUser== 1 ){ ?>
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="">Administrar</a>
+                <a class="nav-link light text-uppercase" href=""><strong>Administrar</strong></a>
               </li>
               <?php } ?>
 
