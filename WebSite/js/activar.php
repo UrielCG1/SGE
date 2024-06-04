@@ -2,13 +2,6 @@
 require '../dao/daoUsuario.php';
 require '../dao/functions.php';
 
-    if(isset($_GET["id"]) AND isset($_GET['val'])){
-
-        $idUsuario = $_GET["id"];
-        $token=$_GET['val'];
-
-        $mensaje = validaToken($idUsuario, $token);
-}
 
 ?>
 
@@ -37,15 +30,12 @@ require '../dao/functions.php';
     <script src="js/modernizr.js"></script>
 </head>
 <body>
-<div id="usuarioActivado" <?php global $mensaje; if($mensaje === 'Cuenta activada.') { echo 'style="display: block;"'; } else { echo 'style="display: none;"'; } ?>>
+<div id="usuarioActivado" class="wrapper" style="display: block; max-width: 550px; text-align:center;">
     <h2>¡Cuenta activada!</h2>
     <p>¡Bienvenido a SGE! ¡Ya puedes iniciar sesión, para hacerlo haz click en el botón:</p>
-    <p><a href='iniciosesion.php' style='color: #bfb3ab; text-decoration: none; font-weight: bold;'>Activar cuenta</a></p>
+    <p><a href='iniciosesion.php' style='text-align:center; color: #d7c1a8; text-decoration: none; font-weight: bold; font-size: 1.3rem '>Iniciar Sesión</a></p>
 </div>
-<div id="usuarioActivado" <?php if($mensaje !== 'Cuenta activada.') { echo 'style="display: block;"'; } else { echo 'style="display: none;"'; } ?>>
-    <h2><?php echo $mensaje; ?></h2>
-    <p><a href='register.php' style='color: #bfb3ab; text-decoration: none; font-weight: bold;'>REGISTRARSE</a></p>
-</div>
+
 
 </body>
 </html>
