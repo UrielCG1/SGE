@@ -1,9 +1,17 @@
 <?php
 // Verificar si los datos están presentes y asignarlos de manera segura
-/*
+
 include_once('connection.php');
 require 'daoUsuario.php';
 require 'functions.php';
+
+use PHPMailer\dao\Phpmailer\Exception;
+use PHPMailer\dao\Phpmailer\PHPMailer;
+use PHPMailer\dao\Phpmailer\SMTP;
+
+require_once 'Phpmailer/Exception.php';
+require_once 'Phpmailer/PHPMailer.php';
+require_once 'Phpmailer/SMTP.php';
 
 if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fotoR'], $_POST['empresaR'], $_POST['numEmpleado'], $_POST['passwordN'])) {
 
@@ -21,15 +29,15 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
         $target_dir = "http://localhost/SGE/WebSite/images/usuarios/";
         $archivo = $_FILES['fotoR']['name'];
         $imgName = $fechaActual . '-' . str_replace(' ', '', $nombre);
-        $img = $target_dir . $imgName;
+        $extension = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
+        $extensionesPermitidas = array("gif", "jpeg", "jpg", "png");
+
+        $img = $target_dir . $imgName . "." . $extension;
 
         $tipo = $_FILES['fotoR']['type'];
         $tamano = $_FILES['fotoR']['size'];
         $temp = $_FILES['fotoR']['tmp_name'];
-        $moverImgFile = "../images/usuarios/" . $imgName;
-
-        $extension = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
-        $extensionesPermitidas = array("gif", "jpeg", "jpg", "png");
+        $moverImgFile = "../images/usuarios/" . $imgName. "." . $extension;
 
         if (in_array($extension, $extensionesPermitidas)) {
             if (move_uploaded_file($temp, $moverImgFile)) {
@@ -37,7 +45,7 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
                 $token = generateToken();
                 $registro = RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password, $token);
                 if($registro > 0){
-                    $url = 'http://'.$_SERVER["SERVER_NAME"].'/login/activar.php?id='.$registro.'&val='.$token;
+                    $url = 'http://'.$_SERVER["SERVER_NAME"].'/SGE/WebSite/php/activar.php?id='.$registro.'&val='.$token;
                     $asunto = 'Activar cuenta | SGE';
                     $cuerpo = "<!DOCTYPE html>
                                 <html lang='es'>
@@ -55,9 +63,8 @@ if(isset( $_POST['nombreR'], $_POST['correoR'], $_POST['telefonoR'], $_FILES['fo
                                 </div>
                                 </body>
                                 </html>";
-
                     if(enviarEmail($correo, $nombre,$asunto,$cuerpo)){
-                        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=confirmacionCorreo.php'>";
+                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=confirmacionCorreo.php'>";
                         exit;
                     }else{
                         echo "Error al enviar correo electrónico";
@@ -87,49 +94,22 @@ function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado
     } else {
         $con = new LocalConector();
         $conex = $con->conectar();
-        global $mysqli;
 
-        $stmt = $mysqli -> prepare("INSERT INTO `Usuarios` ( `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`, `numEmpleado`) 
-                                VALUES ( ?, ?, ?, ?, ?,?,?,?)");
-        $stmt->bind_param('ssssssss', $nombre, $correo, $passwordS, $telefono, $empresa,$img,$token, $noEmpleado);
-
-
-        if ($stmt->execute()) {
-            return $mysqli->insert_id;
-        } else {
-            return 0;
-        }
-    }
-}
-*/
-
-/*
- function RegistrarUsuario($nombre ,$correo, $telefono, $img,$empresa,$noEmpleado,$password,$token)
-{
-    $passwordS = sha1($password);
-    $resultado = Usuario($noEmpleado);
-
-    if ($resultado['success']) {
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=register.php'>";
-        echo '<script>alert("El usuario ya existe, verifique sus datos")</script>';
-        return 0;
-    } else {
-        $con = new LocalConector();
-        $conex = $con->conectar();
-
-        $insertUsuario = "INSERT INTO `Usuarios` (`userId`, `nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `token`)
-                                VALUES ('$noEmpleado', '$nombre', '$correo', '$passwordS', '$telefono', '$empresa','$img','$token')";
+        $insertUsuario = "INSERT INTO `usuarios` (`nombreCompleto`, `email`, `password`, `telefono`, `empresa`, `fotoUsuario`, `numEmpleado`, `token`) 
+                            VALUES ('$nombre', '$correo', '$passwordS', '$telefono', '$empresa', '$img', '$noEmpleado', '$token')";
         $rInsertUsuario = mysqli_query($conex, $insertUsuario);
+        echo $rInsertUsuario;
 
         mysqli_close($conex);
 
         if (!$rInsertUsuario) {
+            echo '<script>alert("Error al registrar el usuario")</script>';
             return 0;
         } else {
+            echo '<script>alert("Usuario registrado exitosamente")</script>';
             return 1;
         }
     }
 }
 
- */
 ?>

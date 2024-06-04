@@ -27,7 +27,7 @@
 <body>
 <h2>SGE | Registro de Usuario</h2>
 <div class="wrapper" id="divRegister">
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="../dao/userRegister.php" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <label for="nombreR"><i class="las la-user"></i>Nombre</label>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col">
                 <label for="telefonoR"><i class="las la-phone"></i>Teléfono</label>
-                <input type="tel" id="telefonoR" name="telefonoR">
+                <input type="tel" id="telefonoR" name="telefonoR" onchange="validarTelefono()">
             </div>
             <div class="col">
                 <label for="fotoR"><i class="las la-image"></i>Foto</label>
@@ -65,11 +65,11 @@
             </div>
             <div class="col">
                 <label for="passwordC"><i class="las la-address-card"></i>Confirmar contraseña</label>
-                <input type="password" id="passwordC"  name="passwordC" onchange="validarPassword();">
+                <input type="password" id="passwordC"  name="passwordC" onchange="">
             </div>
         </div>
         <div class="submit-container">
-            <button type="submit" class="btn btn-primary" id="btn-save"  onclick="  registrarUsuario()"><i class="las la-save"></i>Registrarse</button>
+            <button type="submit" class="btn btn-primary" id="btn-save" onclick="registrarUsuario()"><i class="las la-save"></i>Registrarse</button>
         </div>
     </form>
 </div>

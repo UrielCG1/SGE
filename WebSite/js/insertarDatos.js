@@ -91,7 +91,7 @@ function registrarUsuario(){
     })
         .then(function (response) {
             if (response.ok) { //respuesta
-                window.location.href = "confirmacionCorreo.php";
+                setTimeout(() => window.location.href = "confirmacionCorreo.php", 15000);
             } else {
                 throw "Error en la llamada Ajax";
             }
@@ -103,3 +103,20 @@ function registrarUsuario(){
             console.log(err);
         });
 }
+
+function validarTelefono() {
+    var telefonoInput = document.getElementById('telefonoR');
+    var telefono = telefonoInput.value;
+    // Expresión regular para validar un número de teléfono local de 10 dígitos
+    var telefonoRegExp = /^\d{10}$/;
+
+    if (telefonoRegExp.test(telefono)) {
+        // El número de teléfono es válido
+        telefonoInput.setCustomValidity('');
+    } else {
+        // El número de teléfono no es válido
+        telefonoInput.setCustomValidity('Por favor, introduce un número de teléfono válido de 10 dígitos.');
+    }
+}
+
+
