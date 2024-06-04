@@ -91,7 +91,7 @@
                     }
                     return json.data.map(function (sala) {
                         return {
-                            "ID Sala": sala.espacioId,
+                            "ID Sala": sala.espacioID,
                             "Nombre de la Sala": sala.nombreEspacio,
                             "Descripción": sala.descripcion,
                             "Tipo de Sala": sala.tipoEspacio,
@@ -99,8 +99,8 @@
                             "Ubicación": sala.ubicacion,
                             "Capacidad": sala.capacidad,
                             "Acciones": `
-                                <a href="registrarSala.php?id_sala=${sala.espacioId}" class="action-link update-link btn btn-warning btnSalas">Actualizar</a>
-                                <button class="btn btn-danger btnSalas" onclick="eliminarSala(${sala.espacioId})">Eliminar</button>
+                                <a href="registrarSala.php?id_sala=${sala.espacioID}" class="action-link update-link btn btn-warning btnSalas">Actualizar</a>
+                                <button class="btn btn-danger btnSalas" onclick="eliminarSala(${sala.espacioID})">Eliminar</button>
                             `
                         };
                     });
