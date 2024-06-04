@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/edificio.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -47,6 +47,7 @@ input[type="email"],
 input[type="tel"],
 input[type="file"],
 input[type="password"],
+input[type="number"],
 textarea {
     width: 100%;
     padding: 8px;
@@ -173,7 +174,21 @@ fotoR::file-selector-button {
     color: #fff;
   }
 
-  .submit {
+  #divH1 h1{
+      color: white;
+  }
+
+td {
+    text-align: center;
+}
+
+button {
+    margin: 5px;
+}
+small{
+    font-size: 0.8rem;
+}
+.submit {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -185,7 +200,7 @@ fotoR::file-selector-button {
     width: 100%;
   }
   
-  .submit:hover {
+.submit:hover {
     background-color: #0056b3;
     transform: scale(1.05);
   }
