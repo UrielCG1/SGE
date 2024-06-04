@@ -26,6 +26,17 @@
   <!-- script
     ================================================== -->
   <script src="js/modernizr.js"></script>
+  <?php
+    session_start();
+    $nombreUser = $_SESSION['nombreUsuario'];
+    $tipoUsuario = $_SESSION['tipoUsuario'];
+
+    if ($tipoUsuario == null) {
+        echo "<script>alert('Permisos Insuficientes')</script>";
+        header("Location: http://localhost/SGE/WebSite/php/login.php");
+        exit();
+    }
+  ?>
 </head>
 
 <body>
@@ -163,6 +174,10 @@
           <div class="offcanvas-body text-hover light-border">
             <ul id="navbar"
               class="navbar-nav text-uppercase justify-content-lg-center justify-content-md-end align-items-center flex-grow-1 pe-3">
+
+              <li class="nav-item pe-4">
+                <a class="nav-link light text-uppercase active" href="#"><strong><?php echo $nombreUser; ?></strong></a>
+              </li>
               <li class="nav-item pe-4">
                 <a class="nav-link light text-uppercase active" href="index.html"><strong>Home</strong></a>
               </li>
@@ -173,8 +188,15 @@
                 <a class="nav-link light text-uppercase" href="#booking-wrap"><strong>Buscar por fecha</strong></a>
               </li>
               <li class="nav-item pe-4">
-                <a class="nav-link light text-uppercase" href="#contact">Contacto</a>
+                <a class="nav-link light text-uppercase" href="#contact"><strong>Contacto</strong></a>
               </li>
+              <?php global $tipoUser; if ($tipoUser== 1 ){ ?>
+              <li class="nav-item pe-4">
+                <a class="nav-link light text-uppercase" href=""><strong>Administrar</strong></a>
+              </li>
+                          
+
+
             <div class="btn-box">
               <button class="btn btn-arrow btn-pill btn-medium btn-dark position-relative" onclick="redirectToLogin()">
                 <span><strong>Login</strong>

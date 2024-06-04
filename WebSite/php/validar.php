@@ -5,9 +5,9 @@ $nombre=$_POST["nombre"];
 $contraseña=$_POST["password"];
 
 session_start();
-$_SESSION['nombre']=$nombre;
+$_SESSION['nombreCompleto']=$nombre;
 
-$consulta= "SELECT * FROM usuarios WHERE nombre='$nombre' and password='$contraseña'";
+$consulta= "SELECT * FROM usuarios WHERE nombreCompleto='$nombre' and password='$contraseña'";
 $resultado= mysqli_query($conn, $consulta);
 
 $filas=mysqli_num_rows($resultado);
