@@ -26,6 +26,17 @@
   <!-- script
     ================================================== -->
   <script src="js/modernizr.js"></script>
+  <?php
+    session_start();
+    $nombreUser = $_SESSION['nombreUsuario'];
+    $tipoUsuario = $_SESSION['tipoUsuario'];
+
+    if ($tipoUsuario == null) {
+        echo "<script>alert('Permisos Insuficientes')</script>";
+        header("Location: http://localhost/SGE/php/login.php");
+        exit();
+    }
+  ?>
 </head>
 
 <body>
@@ -175,7 +186,11 @@
               <li class="nav-item pe-4">
                 <a class="nav-link light text-uppercase" href="#contact">Contacto</a>
               </li>
-                          
+              <?php global $tipoUser; if ($tipoUser== 1 ){ ?>
+              <li class="nav-item pe-4">
+                <a class="nav-link light text-uppercase" href="">Administrar</a>
+              </li>
+              <?php } ?>
 
 
             <div class="btn-box">
