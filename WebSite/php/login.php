@@ -21,7 +21,7 @@
       </div>
       <div><input type="submit" class="submit"  value="Entrar"></div>  
       <div class="regis">
-        <button class="btn btn-secundary" id="iniciarSesionBtn"><a href="register.php">Registrar</a></button>
+        <button class="btn btn-secundary"><a href="register.php">Registrar</a></button>
       </div>
       <div class="pass">
         <a href="forgotpass.php">Olvidaste contraseña</a>
