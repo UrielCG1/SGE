@@ -3,7 +3,7 @@
 $servername = "localhost";  
 $username = "root";         
 $password = "";             
-$dbname = "mydb";
+$dbname = "sge_fin";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
